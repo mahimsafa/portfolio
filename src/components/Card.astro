@@ -4,7 +4,7 @@ import { format } from "date-fns";
 let date = format(new Date(Astro.props.date), "PPPP, p");
 ---
 
-<div class="border flex flex-col md:flex-row space-x-2 items-center md:p-2 shadow-sm ">
+<div class="border dark:border-slate-700 dark:bg-slate-800 flex flex-col md:flex-row space-x-2 items-center md:p-2 shadow-sm">
   <a href={`/article/${Astro.props.slug}`} class="w-full h-full flex items-center justify-center md:block">
     <img
       src={Astro.props.img}
@@ -12,15 +12,15 @@ let date = format(new Date(Astro.props.date), "PPPP, p");
       width={250}
       height={167}
       loading="lazy"
-      class="rounded cursor-pointer "
+      class="rounded cursor-pointer"
     />
   </a>
   <div class='flex space-y-2 mt-2 flex-col md:block md:mt-0'>
-    <h1 class="text-2xl font-semibold cursor-pointer hover:text-sky-400 transition-colors duration-150 ease-in-out">
+    <h1 class="text-2xl font-semibold dark:text-slate-200 cursor-pointer hover:text-sky-400 transition-colors duration-150 ease-in-out">
       <a href={`/article/${Astro.props.slug}`}>{Astro.props.heading}</a>
     </h1>
-    <h4 class="text-sm text-gray-500">{date}</h4>
-    <p>
+    <h4 class="text-sm text-gray-500 dark:text-slate-400">{date}</h4>
+    <p class="dark:text-slate-300">
       {Astro.props.description}
     </p>
   </div>

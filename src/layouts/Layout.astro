@@ -62,9 +62,15 @@ const title = rawTitle ? `${rawTitle} | Mahim Safa` : "Mahim Safa";
   }
 </style>
 
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark:bg-slate-950 dark:text-slate-200">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = stored ?? (prefersDark ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
@@ -83,7 +89,7 @@ const title = rawTitle ? `${rawTitle} | Mahim Safa` : "Mahim Safa";
   </head>
   <body class="w-screen overflow-x-hidden bg-hero-pattern min-h-screen">
     <Navbar />
-    <div class="max-w-5xl px-5 md:mx-auto bg-white -mt-16 pt-16 shadow bg-opacity-95 min-h-full flex flex-col space-y-10">
+    <div class="max-w-5xl px-5 md:mx-auto bg-white dark:bg-slate-900 -mt-16 pt-16 shadow dark:shadow-slate-800/20 bg-opacity-95 min-h-full flex flex-col space-y-10">
       <slot />
     </div>
     <Footer />

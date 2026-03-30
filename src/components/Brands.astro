@@ -7,10 +7,10 @@ import type { Brand } from "../types/index";
   <h1 class="text-center text-3xl text-sky-400 font-semibold">
     Brands & Clients
   </h1>
-  <p class="text-gray-400 text-center">
+  <p class="text-gray-400 dark:text-slate-500 text-center">
     Brands and clients I have worked with.
   </p>
-  <div class="slider border py-3">
+  <div class="slider border dark:border-slate-700 py-3">
     <div class="slide-track">
       {
         brands.map((item: Brand) => (
@@ -25,7 +25,7 @@ import type { Brand } from "../types/index";
               height={100}
               width={250}
               alt={item.link}
-              class="object-cover max-w-full"
+              class="object-cover max-w-full dark:invert dark:opacity-70"
             />
           </a>
         ))
@@ -40,6 +40,14 @@ import type { Brand } from "../types/index";
       to right,
       rgba(255, 255, 255, 1) 0%,
       rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  @mixin dark-gradient {
+    background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 1) 0%,
+      rgba(15, 23, 42, 0) 100%
     );
   }
 
@@ -64,6 +72,10 @@ import type { Brand } from "../types/index";
     position: relative;
     width: 100%;
 
+    :global(.dark) & {
+      background: rgb(15, 23, 42);
+    }
+
     &::before,
     &::after {
       @include white-gradient;
@@ -76,6 +88,15 @@ import type { Brand } from "../types/index";
       @media only screen and (max-width: 700px){
         display:none;
       }
+    }
+
+    :global(.dark) &::before,
+    :global(.dark) &::after {
+      @include dark-gradient;
+    }
+
+    :global(.dark) &::after {
+      transform: rotateZ(180deg);
     }
 
     &::after {

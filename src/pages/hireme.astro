@@ -65,14 +65,14 @@ const contactLinks: ContactLink[] = [
       <p class="text-sky-400 text-sm font-semibold tracking-widest uppercase mb-2">
         // available for work
       </p>
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-slate-100 leading-tight">
         Let's Build Something<br />
         <span class="text-sky-400">Together</span>
       </h1>
     </div>
 
     <!-- Intro paragraph -->
-    <p class="text-gray-600 text-base leading-relaxed mb-10 max-w-prose">
+    <p class="text-gray-600 dark:text-slate-400 text-base leading-relaxed mb-10 max-w-prose">
       I'm currently available for freelance projects, consulting, and full-time
       opportunities. Whether you need a new product built from scratch, a
       codebase untangled, or a reliable engineer on your team — feel free to
@@ -89,29 +89,29 @@ const contactLinks: ContactLink[] = [
             {...(link.isExternal
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            class="group flex items-start gap-4 p-5 border border-gray-200 rounded-md hover:border-sky-400 transition-colors duration-200 bg-white"
+            class="group flex items-start gap-4 p-5 border border-gray-200 dark:border-slate-700 rounded-md hover:border-sky-400 transition-colors duration-200 bg-white dark:bg-slate-800"
           >
             <div class="mt-0.5 shrink-0">
               <Icon
                 name={link.icon}
-                class="w-6 h-6 text-gray-400 group-hover:text-sky-400 transition-colors duration-200"
+                class="w-6 h-6 text-gray-400 dark:text-slate-500 group-hover:text-sky-400 transition-colors duration-200"
               />
             </div>
             <div class="flex flex-col min-w-0">
               <span class="text-xs font-semibold tracking-widest uppercase text-sky-400 mb-0.5">
                 {link.platform}
               </span>
-              <span class="text-sm font-medium text-gray-900 truncate">
+              <span class="text-sm font-medium text-gray-900 dark:text-slate-200 truncate">
                 {link.handle}
               </span>
-              <span class="text-xs text-gray-500 mt-0.5">
+              <span class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">
                 {link.description}
               </span>
             </div>
             {link.isExternal && (
               <Icon
                 name="bi:arrow-up-right"
-                class="w-4 h-4 text-gray-300 group-hover:text-sky-400 transition-colors duration-200 ml-auto shrink-0 mt-0.5"
+                class="w-4 h-4 text-gray-300 dark:text-slate-600 group-hover:text-sky-400 transition-colors duration-200 ml-auto shrink-0 mt-0.5"
               />
             )}
           </a>
