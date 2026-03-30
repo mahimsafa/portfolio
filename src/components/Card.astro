@@ -18,7 +18,7 @@ let date = format(new Date(Astro.props.date), "PPPP, p");
     />
   </a>
   <div class='flex space-y-2 mt-2 flex-col md:block md:mt-0'>
-    <h1 class="text-2xl font-semibold cursor-pointer hover:text-red-400 transition-colors duration-150 ease-in-out">
+    <h1 class="text-2xl font-semibold cursor-pointer hover:text-sky-400 transition-colors duration-150 ease-in-out">
       <a href={`/article/${Astro.props.slug}`}>{Astro.props.heading}</a>
     </h1>
     <h4 class="text-sm text-gray-500">{date}</h4>

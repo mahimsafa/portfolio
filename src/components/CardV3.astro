@@ -14,7 +14,7 @@ const gender = Astro.props.gender === "F" ? false : true;
 
 <div class="border shadow w-64 h-auto md:h-[30rem] flex flex-col justify-start items-center px-2 pb-5 md:pb-0">
   <div
-    class="w-24 h-24 rounded-full overflow-hidden border-2 border-red-400 hover:animate-pulse my-5 cursor-pointer"
+    class="w-24 h-24 rounded-full overflow-hidden border-2 border-sky-400 hover:animate-pulse my-5 cursor-pointer"
   >
     {
       img ? (
@@ -32,10 +32,10 @@ const gender = Astro.props.gender === "F" ? false : true;
   <h4 class="font-semibold">
     {name}
   </h4>
-  {role && <h5 class="text-sm text-red-400">{role}</h5>}
+  {role && <h5 class="text-sm text-sky-400">{role}</h5>}
   <a
     href={ref}
-    class="transition-colors duration-150 ease-in hover:text-red-400 font-medium"
+    class="transition-colors duration-150 ease-in hover:text-sky-400 font-medium"
     target="_blank"
     rel="noopener noreferrer"
   >

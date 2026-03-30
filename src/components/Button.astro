@@ -3,7 +3,7 @@ import { Icon } from "astro-icon";
 ---
 
 <button
-  class="group flex px-3 py-2 mt-5 rounded-sm justify-center items-center shadow border transition-colors duration-200 ease-in hover:text-red-400"
+  class="group flex px-3 py-2 mt-5 rounded-sm justify-center items-center shadow border transition-colors duration-200 ease-in hover:text-sky-400"
   onclick="share()"
   onmouseout="outFunc()"
   >Share
@@ -14,7 +14,7 @@ import { Icon } from "astro-icon";
   <Icon
     name="share"
     width="20"
-    class="transition-colors duration-200 ease-in hover:text-red-400 group-hover:fill-red-400 ml-2"
+    class="transition-colors duration-200 ease-in hover:text-sky-400 group-hover:fill-sky-400 ml-2"
   />
 </button>
 
@@ -24,7 +24,7 @@ import { Icon } from "astro-icon";
     navigator.clipboard.writeText(sharecontent);
 
     const tooltip = document.getElementById("tooltip");
-    tooltip.innerHTML = "<b class='text-red-400'>Copied: </b> " + sharecontent;
+    tooltip.innerHTML = "<b class='text-sky-400'>Copied: </b> " + sharecontent;
   }
   function outFunc() {
     const tooltip = document.getElementById("tooltip");
