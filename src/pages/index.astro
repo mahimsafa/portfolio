@@ -2,7 +2,7 @@
 import { Image } from "@astrojs/image/components";
 import Layout from "../layouts/Layout.astro";
 import Experience from "../components/Experience.astro";
-import Involvment from "../components/Involvment.astro";
+import Involvement from "../components/Involvement.astro";
 
 import DP from "../assets/mahim-dp.jpg";
 import Testimonials from "../components/Testimonials.astro";
@@ -13,7 +13,6 @@ import Brands from "../components/Brands.astro";
   <header
     class="py-10 mb-20 md:pt-20 flex justify-around items-center flex-col md:flex-row w-full"
   >
-    <!-- <img src={DP} alt="mahim-safa-dp" class="w-60 h-60 rounded-xl md:-rotate-12 " /> -->
     <Image src={DP} alt="mahim-safa-dp" class="w-60 h-60 rounded-xl shadow-lg" aspectRatio={1/1} format='avif' fit='cover' />
     <div class="md:w-1/2 flex flex-col">
       <h1 class="my-3 text-2xl">Hi, I am Mahim Safa</h1>
@@ -34,7 +33,7 @@ import Brands from "../components/Brands.astro";
   </header>
 
   <Experience />
-  <Involvment />
+  <Involvement />
   <Brands />
   <Testimonials />
 </Layout>
