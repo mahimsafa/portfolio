@@ -4,7 +4,7 @@ import { format } from "date-fns";
 let date = format(new Date(Astro.props.date), "PPPP, p");
 ---
 
-<div class="border dark:border-slate-700 dark:bg-slate-800 flex flex-col md:flex-row space-x-2 items-center md:p-2 shadow-sm">
+<div class="border dark:border-slate-700 dark:bg-slate-800 flex flex-col md:flex-row space-x-2 items-center md:p-2 shadow-sm hover:-translate-y-1 transition-transform duration-200">
   <a href={`/article/${Astro.props.slug}`} class="w-full h-full flex items-center justify-center md:block">
     <img
       src={Astro.props.img}

@@ -3,7 +3,7 @@ import { brands } from "../content/data.ts";
 import type { Brand } from "../types/index";
 ---
 
-<section class="w-full flex flex-col justify-center space-y-5 my-10 pb-10">
+<section class="w-full flex flex-col justify-center space-y-5 my-10 pb-10" data-animate>
   <h1 class="text-center text-3xl text-sky-400 font-semibold">
     Brands & Clients
   </h1>
@@ -18,6 +18,26 @@ import type { Brand } from "../types/index";
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
+            class="mx-10 h-20 w-auto py-4 overflow-hidden flex items-center justify-center"
+          >
+            <img
+              src={item.logo}
+              height={100}
+              width={250}
+              alt={item.link}
+              class="object-cover max-w-full dark:invert dark:opacity-70"
+            />
+          </a>
+        ))
+      }
+      {/* Duplicate for seamless loop */}
+      {
+        brands.map((item: Brand) => (
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-hidden="true"
             class="mx-10 h-20 w-auto py-4 overflow-hidden flex items-center justify-center"
           >
             <img
@@ -60,7 +80,7 @@ import type { Brand } from "../types/index";
       transform: translateX(0);
     }
     100% {
-      transform: translateX(calc(-200px * $items));
+      transform: translateX(-50%);
     }
   }
 
