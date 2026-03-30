@@ -1,0 +1,79 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedDate?: Date;
+  tags?: string[];
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  type,
+  publishedDate,
+  tags,
+  canonicalUrl,
+} = Astro.props;
+
+const ogImage = image ?? 'https://mahimsafa.com/img/og-default.jpg';
+const canonical = canonicalUrl ?? Astro.url.href;
+
+const isArticle = type === 'article' || publishedDate !== undefined;
+
+const schema = isArticle
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: title,
+      author: {
+        '@type': 'Person',
+        name: 'Mahim Safa',
+      },
+      datePublished: publishedDate?.toISOString(),
+      description: description,
+      image: ogImage,
+    }
+  : {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Mahim Safa',
+      url: 'https://mahimsafa.com',
+      jobTitle: 'Lead Software Developer',
+      description: 'AWS, DevOps, and MERN stack developer',
+      sameAs: [
+        'https://www.linkedin.com/in/mahimsafa/',
+        'https://github.com/mahimsafa',
+        'https://twitter.com/mahim_safa',
+      ],
+    };
+---
+
+<meta name="description" content={description} />
+<meta name="author" content="Mahim Safa" />
+{tags && tags.length > 0 && <meta name="keywords" content={tags.join(', ')} />}
+
+<!-- OpenGraph -->
+<meta property="og:type" content={type ?? 'website'} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content="Mahim Safa" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@mahim_safa" />
+<meta name="twitter:creator" content="@mahim_safa" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Canonical -->
+<link rel="canonical" href={canonical} />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

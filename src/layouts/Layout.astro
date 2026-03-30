@@ -4,10 +4,24 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+import type { SEOProps } from "../types/index";
 
-const title = Astro.props.title
-  ? `${Astro.props.title} | Mahim Safa`
-  : "Mahim Safa";
+interface Props extends SEOProps {
+  canonicalUrl?: string;
+}
+
+const {
+  title: rawTitle,
+  description = 'AWS, DevOps, and full-stack developer specializing in cloud architecture, MERN stack, and AI systems.',
+  image,
+  type,
+  publishedDate,
+  tags,
+  canonicalUrl,
+} = Astro.props;
+
+const title = rawTitle ? `${rawTitle} | Mahim Safa` : "Mahim Safa";
 ---
 
 <style is:global>
@@ -55,6 +69,15 @@ const title = Astro.props.title
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <SEO
+      title={rawTitle}
+      description={description}
+      image={image}
+      type={type}
+      publishedDate={publishedDate}
+      tags={tags}
+      canonicalUrl={canonicalUrl}
+    />
     <Analytics />
     <SpeedInsights />
   </head>

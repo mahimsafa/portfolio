@@ -6,7 +6,10 @@ import { external } from "../content/data.ts";
 import type { External } from "../content/data.ts";
 ---
 
-<Layout title="External">
+<Layout
+  title="Appearances"
+  description="Speaking engagements, webinars, and community contributions by Mahim Safa."
+>
   <section class="flex flex-col space-y-4 py-5">
     {external.map((item: External) => <CardV4 item={item} />)}
   </section>
