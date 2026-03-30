@@ -1,7 +1,6 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "strictNullChecks": true,
     "allowJs": false,
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
