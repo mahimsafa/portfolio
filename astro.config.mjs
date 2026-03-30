@@ -1,28 +1,19 @@
-import { defineConfig } from 'astro/config';
-
-// https://astro.build/config
+import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-
-// https://astro.build/config
-import image from "@astrojs/image";
-
-// https://astro.build/config
 import solidJs from "@astrojs/solid-js";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://mahimsafa.com",
   build: {
-    assets: 'assets'
+    assets: "assets",
   },
   markdown: {
-    render: ['@astrojs/markdown-remark', {
-      syntaxHighlight: 'shiki',
-      shikiConfig: {
-        theme: 'nord',
-        langs: ['js', 'html', 'css', 'astro'],
-        wrap: false
-      }
-    }]
+    syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "nord",
+    },
   },
-  integrations: [tailwind(), image(), solidJs()]
+  integrations: [tailwind(), solidJs(), sitemap()],
 });

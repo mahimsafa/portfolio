@@ -1,11 +1,8 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "types": [
-      "@astrojs/image/client"
-    ],
     "strictNullChecks": true,
-    "allowJs": true,
+    "allowJs": false,
     "jsx": "preserve",
     "jsxImportSource": "solid-js"
   }
