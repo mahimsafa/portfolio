@@ -1,10 +1,119 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+interface ContactLink {
+  platform: string;
+  handle: string;
+  href: string;
+  icon: string;
+  description: string;
+  isExternal: boolean;
+}
+
+const contactLinks: ContactLink[] = [
+  {
+    platform: "Email",
+    handle: "hello@mahimsafa.com",
+    href: "mailto:hello@mahimsafa.com",
+    icon: "bi:envelope-fill",
+    description: "Best for project inquiries",
+    isExternal: false,
+  },
+  {
+    platform: "LinkedIn",
+    handle: "linkedin.com/in/mahimsafa",
+    href: "https://www.linkedin.com/in/mahimsafa/",
+    icon: "bi:linkedin",
+    description: "Connect professionally",
+    isExternal: true,
+  },
+  {
+    platform: "GitHub",
+    handle: "github.com/mahimsafa",
+    href: "https://github.com/mahimsafa",
+    icon: "bi:github",
+    description: "See my open-source work",
+    isExternal: true,
+  },
+  {
+    platform: "Twitter / X",
+    handle: "@mahim_safa",
+    href: "https://twitter.com/mahim_safa",
+    icon: "bi:twitter-x",
+    description: "Thoughts and updates",
+    isExternal: true,
+  },
+  {
+    platform: "Fiverr",
+    handle: "fiverr.com/mahimsafa",
+    href: "https://www.fiverr.com/mahimsafa",
+    icon: "bi:bag-fill",
+    description: "Hire me for freelance work",
+    isExternal: true,
+  },
+];
 ---
 
-<Layout title="Contact">
-  <section class="my-10 flex flex-col items-center justify-center">
-    <h1 class="text-3xl font-semibold text-sky-400">Get In Touch</h1>
-    <p class="mt-4 text-gray-600">Contact page coming soon.</p>
+<Layout title="Hire Me">
+  <section class="my-12 flex flex-col items-start max-w-2xl mx-auto w-full px-2">
+    <!-- Heading -->
+    <div class="mb-8">
+      <p class="text-sky-400 text-sm font-semibold tracking-widest uppercase mb-2">
+        // available for work
+      </p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+        Let's Build Something<br />
+        <span class="text-sky-400">Together</span>
+      </h1>
+    </div>
+
+    <!-- Intro paragraph -->
+    <p class="text-gray-600 text-base leading-relaxed mb-10 max-w-prose">
+      I'm currently available for freelance projects, consulting, and full-time
+      opportunities. Whether you need a new product built from scratch, a
+      codebase untangled, or a reliable engineer on your team — feel free to
+      reach out through any of the channels below.
+    </p>
+
+    <!-- Contact cards grid -->
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {
+        contactLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-label={`${link.platform}: ${link.handle}`}
+            {...(link.isExternal
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            class="group flex items-start gap-4 p-5 border border-gray-200 rounded-md hover:border-sky-400 transition-colors duration-200 bg-white"
+          >
+            <div class="mt-0.5 shrink-0">
+              <Icon
+                name={link.icon}
+                class="w-6 h-6 text-gray-400 group-hover:text-sky-400 transition-colors duration-200"
+              />
+            </div>
+            <div class="flex flex-col min-w-0">
+              <span class="text-xs font-semibold tracking-widest uppercase text-sky-400 mb-0.5">
+                {link.platform}
+              </span>
+              <span class="text-sm font-medium text-gray-900 truncate">
+                {link.handle}
+              </span>
+              <span class="text-xs text-gray-500 mt-0.5">
+                {link.description}
+              </span>
+            </div>
+            {link.isExternal && (
+              <Icon
+                name="bi:arrow-up-right"
+                class="w-4 h-4 text-gray-300 group-hover:text-sky-400 transition-colors duration-200 ml-auto shrink-0 mt-0.5"
+              />
+            )}
+          </a>
+        ))
+      }
+    </div>
   </section>
 </Layout>
