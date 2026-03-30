@@ -1,5 +1,5 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import Logo from "../assets/mahim-logo.png";
 ---
 
@@ -13,7 +13,7 @@ import Logo from "../assets/mahim-logo.png";
         href="/"
         class="transition-colors duration-150 ease-in hover:text-sky-400"
       >
-        <Image src={Logo} width={50} height={50} alt="Mahim Logo" fit="cover" />
+        <Image src={Logo} width={50} height={50} alt="Mahim Logo" />
       </a>
     </li>
     <li class="flex items-center space-x-4">

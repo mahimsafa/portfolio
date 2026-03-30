@@ -1,15 +1,20 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import FAvatar from "../assets/female-avatar.svg";
 import Avatar from "../assets/avatar.svg";
 
-const name = Astro.props.name || "";
-const role = Astro.props.role || "";
-const img = Astro.props.img || "";
-const review = Astro.props.review || "";
-const ref = Astro.props.ref;
-const company = Astro.props.company || "";
-const gender = Astro.props.gender === "F" ? false : true;
+interface Props {
+  name: string;
+  gender: 'F' | 'M';
+  role?: string;
+  img?: string;
+  review: string;
+  ref?: string;
+  company?: string;
+}
+
+const { name, role = '', img, review, ref, company = '', gender } = Astro.props;
+const isMale = gender !== 'F';
 ---
 
 <div class="border shadow w-64 h-auto md:h-[30rem] flex flex-col justify-start items-center px-2 pb-5 md:pb-0">
@@ -18,13 +23,14 @@ const gender = Astro.props.gender === "F" ? false : true;
   >
     {
       img ? (
-        <img src={img} class="object-cover" alt="" />
+        <img src={img} class="object-cover" alt={name + " profile photo"} width={96} height={96} loading="lazy" />
       ) : (
         <Image
-          src={gender ? Avatar : FAvatar}
-          alt=""
+          src={isMale ? Avatar : FAvatar}
+          alt={name}
           class="object-cover -pb-2"
-          width={200}
+          width={96}
+          height={96}
         />
       )
     }

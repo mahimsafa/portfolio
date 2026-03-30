@@ -1,10 +1,10 @@
 ---
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 import ByteCapsule from "../assets/bytecapsuleit.jpeg";
 import WIYP from "../assets/wellington.png";
 import Fiverr from "../assets/fiverr-logo.png";
 import AZGroup from "../assets/azgroup-logo.svg";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 ---
 
 <section
@@ -20,10 +20,10 @@ import { Icon } from "astro-icon";
             <div class="flex items-center mb-1">
               <Image
                 src={AZGroup}
-                alt="Fiverr Logo"
+                alt="AZ Group logo"
                 class="h-6 w-6 mr-2"
-                fit="cover"
-                format="svg"
+                width={24}
+                height={24}
               />
               <h1 class="text-lg font-semibold flex items-center">
                 AZ Group
@@ -61,9 +61,10 @@ import { Icon } from "astro-icon";
             <div class="flex items-center mb-1">
               <Image
                 src={Fiverr}
-                alt="Fiverr Logo"
+                alt="Fiverr logo"
                 class="h-6 w-6 mr-2"
-                fit="cover"
+                width={24}
+                height={24}
                 format="avif"
               />
               <h1 class="text-lg font-semibold flex items-center">
@@ -107,9 +108,10 @@ import { Icon } from "astro-icon";
             <div class="flex items-center mb-1">
               <Image
                 src={WIYP}
-                alt="Wellington Logo"
+                alt="Wellington In Your Pocket logo"
                 class="h-6 w-6 mr-2"
-                fit="cover"
+                width={24}
+                height={24}
                 format="avif"
               />
               <h1 class="text-lg font-semibold flex items-center">
@@ -155,10 +157,10 @@ import { Icon } from "astro-icon";
             <div class="flex items-center mb-1">
               <Image
                 src={ByteCapsule}
-                alt="Bytecapsule Logo"
+                alt="Byte Capsule Ltd logo"
                 class="h-6 w-6 mr-2"
-                aspectRatio={1 / 1}
-                fit="cover"
+                width={24}
+                height={24}
                 format="avif"
               />
               <h1 class="text-lg font-semibold flex items-center">
