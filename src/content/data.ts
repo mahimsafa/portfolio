@@ -38,9 +38,9 @@ export const experiences: Experience[] = [
   {
     company: 'Field Nation',
     role: 'Software Engineer',
-    startDate: [2024, 12],
+    startDate: [2025, 12],
     endDate: null,
-    period: formatPeriod([2024, 12], null),
+    period: formatPeriod([2025, 12], null),
     current: true,
     link: 'https://fieldnation.com',
     achievements: [
@@ -64,8 +64,8 @@ export const experiences: Experience[] = [
     company: 'AZ Group',
     role: 'Lead Software Developer',
     startDate: [2023, 11],
-    endDate: [2024, 11],
-    period: formatPeriod([2023, 11], [2024, 11]),
+    endDate: [2025, 11],
+    period: formatPeriod([2023, 11], [2025, 11]),
     link: 'https://www.az-group.io/butly-ai',
     achievements: [
       'Architected and led full-stack development of Butly AI, an enterprise-grade AI-powered customer support platform',
@@ -73,20 +73,6 @@ export const experiences: Experience[] = [
       'Established engineering standards, code review processes, and CI/CD pipelines',
     ],
     skills: ['TypeScript', 'AWS', 'LangChain', 'OpenAI', 'Docker', 'CI/CD', 'Node.js'],
-  },
-  {
-    company: 'Fiverr',
-    role: 'Level 2 Seller',
-    startDate: [2022, 9],
-    endDate: null,
-    period: formatPeriod([2022, 9], null),
-    link: 'https://fiverr.com/mahimsafa',
-    achievements: [
-      'Delivered 50+ AWS infrastructure and full-stack engagements as a top-rated freelancer',
-      'Maintained consistent 5-star rating across all projects',
-      'Architected serverless solutions reducing client infrastructure costs by up to 60%',
-    ],
-    skills: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Serverless', 'Node.js', 'MERN Stack'],
   },
   {
     company: 'Wellington In Your Pocket',
@@ -102,6 +88,21 @@ export const experiences: Experience[] = [
     ],
     skills: ['AWS', 'EC2', 'RDS', 'CloudFront', 'CI/CD', 'Terraform'],
   },
+  {
+    company: 'Fiverr',
+    role: 'Level 2 Seller',
+    startDate: [2022, 9],
+    endDate: null,
+    period: formatPeriod([2022, 9], null),
+    link: 'https://fiverr.com/mahimsafa',
+    achievements: [
+      'Delivered 50+ AWS infrastructure and full-stack engagements as a top-rated freelancer',
+      'Maintained consistent 5-star rating across all projects',
+      'Architected serverless solutions reducing client infrastructure costs by up to 60%',
+    ],
+    skills: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Serverless', 'Node.js', 'MERN Stack'],
+  },
+ 
   {
     company: 'Byte Capsule Ltd.',
     role: 'Operations Lead',
