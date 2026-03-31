@@ -1,6 +1,6 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -10,7 +10,7 @@ const posts = await getCollection('blog');
   title="Blog"
   description="Technical articles on AWS architecture, DevOps practices, MongoDB, and full-stack development by Mahim Safa."
 >
-  <div class="my-10 pb-5 flex space-y-7 flex-col dark:text-slate-200">
+  <div class="my-10 flex flex-col space-y-7 pb-5 dark:text-slate-200">
     {
       posts.map((item) => {
         return (
@@ -19,10 +19,10 @@ const posts = await getCollection('blog');
             heading={item.data.title}
             img={item.data.cover}
             date={item.data.date}
-            description={item.body.slice(0,300).replace('#','')}
-            />
-            );
-          })
-        }
+            description={item.body.slice(0, 300).replace('#', '')}
+          />
+        );
+      })
+    }
   </div>
 </Layout>

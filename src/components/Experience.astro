@@ -1,110 +1,116 @@
 ---
-import { Image } from "astro:assets";
-import ByteCapsule from "../assets/bytecapsuleit.jpeg";
-import WIYP from "../assets/wellington.png";
-import Fiverr from "../assets/fiverr-logo.png";
-import AZGroup from "../assets/azgroup-logo.svg";
-import { Icon } from "astro-icon/components";
+import { Image } from 'astro:assets';
+import ByteCapsule from '../assets/bytecapsuleit.jpeg';
+import WIYP from '../assets/wellington.png';
+import Fiverr from '../assets/fiverr-logo.png';
+import AZGroup from '../assets/azgroup-logo.svg';
+import { Icon } from 'astro-icon/components';
 ---
 
 <section
-  class="my-10 w-full border-l border-gray-300 dark:border-slate-700 p-3 flex flex-col md:flex-row items-center md:items-start"
+  class="my-10 flex w-full flex-col items-center border-l border-gray-300 p-3 dark:border-slate-700 md:flex-row md:items-start"
   data-animate
 >
-  <h1 class="text-sky-400 text-xl font-semibold mr-10">Experience</h1>
+  <h1 class="mr-10 text-xl font-semibold text-sky-400">Experience</h1>
   <div class="flex flex-col space-y-10">
     <!-- Experience 3 -->
-    <div class="">
-      <div class="flex justify-between w-full">
-          <div class="flex flex-col md:border-l md:border-gray-300 dark:border-slate-700">
+    <div
+      class="rounded-sm border-l-2 border-sky-400 bg-slate-50 p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:bg-slate-800/50"
+    >
+      <div class="flex w-full justify-between">
+        <div class="flex flex-col">
           <div class="mx-5">
-            <div class="flex items-center mb-1">
+            <div class="mb-1 flex items-center">
               <Image
                 src={AZGroup}
                 alt="AZ Group logo"
-                class="h-6 w-6 mr-2"
+                class="mr-2 h-6 w-6"
                 width={24}
                 height={24}
               />
-              <h1 class="text-lg font-semibold flex items-center dark:text-slate-200">
+              <h1 class="flex items-center text-lg font-semibold dark:text-slate-200">
                 AZ Group
                 <span>
-                  <a href="https://www.az-group.io/butly-ai" target="_blank" rel="noopener noreferrer">
-                    <Icon
-                      name="gridicons:external"
-                      class="ml-2 text-sky-400"
-                      width="18"
-                    />
+                  <a
+                    href="https://www.az-group.io/butly-ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon name="gridicons:external" class="ml-2 text-sky-400" width="18" />
                   </a>
                 </span>
               </h1>
             </div>
-            <h3>Lead Software Developer</h3>
+            <h3 class="text-sm text-gray-500 dark:text-slate-400">Lead Software Developer</h3>
           </div>
         </div>
         <p class="text-gray-600 dark:text-slate-400">Nov, 2023 - Present</p>
       </div>
-      <div class="ml-5 mt-4">
-        <p class="text-sm text-gray-600 dark:text-slate-400">
-          Architected and led the full-stack development of Butly AI, an enterprise-grade AI-powered customer support platform. Designed a multi-LLM orchestration layer that intelligently routes queries across multiple Large Language Models to deliver contextually accurate, low-latency responses. Established engineering standards, code review processes, and CI/CD pipelines that reduced deployment friction across the team. Collaborated directly with stakeholders to translate product vision into scalable technical architecture, owning both infrastructure and core application development end-to-end.
-        </p>
-      </div>
+      <ul class="ml-5 mt-4 list-disc space-y-1.5 pl-4 text-sm text-gray-600 dark:text-slate-400">
+        <li>Architected and led full-stack development of Butly AI, an enterprise-grade AI-powered customer support platform.</li>
+        <li>Designed a multi-LLM orchestration layer that intelligently routes queries across multiple Large Language Models for contextually accurate, low-latency responses.</li>
+        <li>Established engineering standards, code review processes, and CI/CD pipelines that reduced deployment friction across the team.</li>
+        <li>Collaborated directly with stakeholders to translate product vision into scalable technical architecture.</li>
+        <li>Owned both infrastructure and core application development end-to-end.</li>
+      </ul>
     </div>
 
-    <!-- Experience 3 -->
-    <div class="">
-      <div class="flex justify-between w-full">
-        <div class="flex flex-col md:border-l md:border-gray-300 dark:border-slate-700">
+    <!-- Experience: Fiverr -->
+    <div
+      class="rounded-sm border-l-2 border-sky-400 bg-slate-50 p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:bg-slate-800/50"
+    >
+      <div class="flex w-full justify-between">
+        <div class="flex flex-col">
           <div class="mx-5">
-            <div class="flex items-center mb-1">
+            <div class="mb-1 flex items-center">
               <Image
                 src={Fiverr}
                 alt="Fiverr logo"
-                class="h-6 w-6 mr-2"
+                class="mr-2 h-6 w-6"
                 width={24}
                 height={24}
                 format="avif"
               />
-              <h1 class="text-lg font-semibold flex items-center dark:text-slate-200">
+              <h1 class="flex items-center text-lg font-semibold dark:text-slate-200">
                 Fiverr
                 <span>
                   <a href="https://fiverr.com/" target="_blank" rel="noopener noreferrer">
-                    <Icon
-                      name="gridicons:external"
-                      class="ml-2 text-sky-400"
-                      width="18"
-                    />
+                    <Icon name="gridicons:external" class="ml-2 text-sky-400" width="18" />
                   </a>
                 </span>
               </h1>
             </div>
-            <h3>Level 2 Seller</h3>
+            <h3 class="text-sm text-gray-500 dark:text-slate-400">Level 2 Seller</h3>
           </div>
         </div>
         <p class="text-gray-600 dark:text-slate-400">Sept, 2022 - Present</p>
       </div>
-      <div class="ml-5 mt-4">
-        <p class="text-sm text-gray-600 dark:text-slate-400">
-          Delivered 50+ AWS infrastructure and full-stack engagements as a top-rated Level 2 freelancer, maintaining a consistent 5-star rating across all projects. Architected serverless solutions on AWS — leveraging Lambda, API Gateway, DynamoDB, and ECS — that reduced client infrastructure costs by up to 60% compared to traditional server setups. Specialized in end-to-end MERN stack application delivery, from database schema design through production deployment, consistently exceeding client expectations on performance, scalability, and security.
-        </p>
-      </div>
+      <ul class="ml-5 mt-4 list-disc space-y-1.5 pl-4 text-sm text-gray-600 dark:text-slate-400">
+        <li>Delivered 50+ AWS infrastructure and full-stack engagements as a top-rated Level 2 freelancer.</li>
+        <li>Maintained a consistent 5-star rating across all projects.</li>
+        <li>Architected serverless solutions on AWS — leveraging Lambda, API Gateway, DynamoDB, and ECS — that reduced client infrastructure costs by up to 60% compared to traditional server setups.</li>
+        <li>Specialized in end-to-end MERN stack application delivery, from database schema design through production deployment.</li>
+        <li>Consistently exceeded client expectations on performance, scalability, and security.</li>
+      </ul>
     </div>
 
     <!-- Experience 2 -->
-    <div class="">
-      <div class="flex justify-between w-full">
+    <div
+      class="rounded-sm border-l-2 border-sky-400 bg-slate-50 p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:bg-slate-800/50"
+    >
+      <div class="flex w-full justify-between">
         <div class="flex flex-col">
           <div class="mx-5">
-            <div class="flex items-center mb-1">
+            <div class="mb-1 flex items-center">
               <Image
                 src={WIYP}
                 alt="Wellington In Your Pocket logo"
-                class="h-6 w-6 mr-2"
+                class="mr-2 h-6 w-6"
                 width={24}
                 height={24}
                 format="avif"
               />
-              <h1 class="text-lg font-semibold flex items-center dark:text-slate-200">
+              <h1 class="flex items-center text-lg font-semibold dark:text-slate-200">
                 Wellington In Your Pocket
                 <span>
                   <a
@@ -112,64 +118,66 @@ import { Icon } from "astro-icon/components";
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Icon
-                      name="gridicons:external"
-                      class="ml-2 text-sky-400"
-                      width="18"
-                    />
+                    <Icon name="gridicons:external" class="ml-2 text-sky-400" width="18" />
                   </a>
                 </span>
               </h1>
             </div>
-            <h3>Cloud Engineer</h3>
+            <h3 class="text-sm text-gray-500 dark:text-slate-400">Cloud Engineer</h3>
           </div>
         </div>
         <p class="text-gray-600 dark:text-slate-400">Jan, 2023 - Sept, 2023</p>
       </div>
-      <div class="ml-5 mt-4">
-        <p class="text-sm text-gray-600 dark:text-slate-400">
-          Designed and implemented the scalable backend cloud infrastructure on AWS supporting the Wellington In Your Pocket platform. Architected high-availability solutions using EC2, RDS, and CloudFront, ensuring the platform could handle peak traffic reliably. Introduced automated CI/CD pipelines that cut deployment time by over 80%, and drove a cloud cost optimization initiative that reduced monthly AWS spend by 40%. Worked cross-functionally with product, design, and QA teams to translate business requirements into robust, production-ready cloud solutions.
-        </p>
-      </div>
+      <ul class="ml-5 mt-4 list-disc space-y-1.5 pl-4 text-sm text-gray-600 dark:text-slate-400">
+        <li>Designed and implemented the scalable backend cloud infrastructure on AWS supporting the Wellington In Your Pocket platform.</li>
+        <li>Architected high-availability solutions using EC2, RDS, and CloudFront, ensuring the platform could handle peak traffic reliably.</li>
+        <li>Introduced automated CI/CD pipelines that cut deployment time by over 80%.</li>
+        <li>Drove a cloud cost optimization initiative that reduced monthly AWS spend by 40%.</li>
+        <li>Worked cross-functionally with product, design, and QA teams to translate business requirements into robust, production-ready cloud solutions.</li>
+      </ul>
     </div>
 
     <!-- Experience 1 -->
-    <div class="">
-      <div class="flex justify-between w-full">
+    <div
+      class="rounded-sm border-l-2 border-sky-400 bg-slate-50 p-4 transition-transform duration-200 hover:-translate-y-0.5 dark:bg-slate-800/50"
+    >
+      <div class="flex w-full justify-between">
         <div class="flex flex-col">
           <div class="mx-5">
-            <div class="flex items-center mb-1">
+            <div class="mb-1 flex items-center">
               <Image
                 src={ByteCapsule}
                 alt="Byte Capsule Ltd logo"
-                class="h-6 w-6 mr-2"
+                class="mr-2 h-6 w-6"
                 width={24}
                 height={24}
                 format="avif"
               />
-              <h1 class="text-lg font-semibold flex items-center dark:text-slate-200">
+              <h1 class="flex items-center text-lg font-semibold dark:text-slate-200">
                 Byte Capsule Ltd.
                 <span>
-                  <a href="https://www.bytecapsuleit.com/" target="_blank" rel="noopener noreferrer">
-                    <Icon
-                      name="gridicons:external"
-                      class="ml-2 text-sky-400"
-                      width="18"
-                    />
+                  <a
+                    href="https://www.bytecapsuleit.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Icon name="gridicons:external" class="ml-2 text-sky-400" width="18" />
                   </a>
                 </span>
               </h1>
             </div>
-            <h3>Operations Lead</h3>
+            <h3 class="text-sm text-gray-500 dark:text-slate-400">Operations Lead</h3>
           </div>
         </div>
         <p class="text-gray-600 dark:text-slate-400">May, 2020 - Nov, 2022</p>
       </div>
-      <div class="ml-5 mt-4">
-        <p class="text-sm text-gray-600 dark:text-slate-400">
-          Led operations and technical service delivery at a fast-growing cybersecurity startup. Conducted application security assessments and penetration testing for enterprise clients, identifying and remediating critical vulnerabilities before production exposure. Designed and delivered cybersecurity training curricula educating over 1,000 students across multiple universities, establishing the company as a credible security education provider. Represented the organization as a keynote speaker at industry conferences and university webinars, strengthening brand visibility. Streamlined internal workflows and cross-team collaboration, measurably improving operational efficiency across the organization.
-        </p>
-      </div>
+      <ul class="ml-5 mt-4 list-disc space-y-1.5 pl-4 text-sm text-gray-600 dark:text-slate-400">
+        <li>Led operations and technical service delivery at a fast-growing cybersecurity startup.</li>
+        <li>Conducted application security assessments and penetration testing for enterprise clients, identifying and remediating critical vulnerabilities before production exposure.</li>
+        <li>Designed and delivered cybersecurity training curricula educating over 1,000 students across multiple universities, establishing the company as a credible security education provider.</li>
+        <li>Represented the organization as a keynote speaker at industry conferences and university webinars, strengthening brand visibility.</li>
+        <li>Streamlined internal workflows and cross-team collaboration, measurably improving operational efficiency across the organization.</li>
+      </ul>
     </div>
   </div>
 </section>

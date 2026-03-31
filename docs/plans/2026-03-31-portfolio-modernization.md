@@ -100,30 +100,30 @@
 3. Create `eslint.config.js` as ESLint v9 flat config:
 
    ```js
-   import tseslint from "@typescript-eslint/eslint-plugin";
-   import tsParser from "@typescript-eslint/parser";
-   import astro from "eslint-plugin-astro";
-   import astroParser from "astro-eslint-parser";
+   import tseslint from '@typescript-eslint/eslint-plugin';
+   import tsParser from '@typescript-eslint/parser';
+   import astro from 'eslint-plugin-astro';
+   import astroParser from 'astro-eslint-parser';
 
    export default [
      // TypeScript files
      {
-       files: ["**/*.{ts,tsx}"],
-       plugins: { "@typescript-eslint": tseslint },
+       files: ['**/*.{ts,tsx}'],
+       plugins: { '@typescript-eslint': tseslint },
        parser: tsParser,
        rules: {
-         "@typescript-eslint/no-explicit-any": "error",
-         "@typescript-eslint/no-unused-vars": "error",
-         "@typescript-eslint/consistent-type-imports": "error",
-         "no-console": "warn",
+         '@typescript-eslint/no-explicit-any': 'error',
+         '@typescript-eslint/no-unused-vars': 'error',
+         '@typescript-eslint/consistent-type-imports': 'error',
+         'no-console': 'warn',
        },
      },
      // Astro files
      {
-       files: ["**/*.astro"],
+       files: ['**/*.astro'],
        plugins: { astro },
        parser: astroParser,
-       parserOptions: { parser: tsParser, extraFileExtensions: [".astro"] },
+       parserOptions: { parser: tsParser, extraFileExtensions: ['.astro'] },
        rules: {
          ...astro.configs.recommended.rules,
        },
@@ -196,36 +196,36 @@
 1. In `Layout.astro`, add a `<style is:global>` block with `@font-face` declarations using the woff2 files already present in `public/fonts/webfonts/`:
    ```css
    @font-face {
-     font-family: "JetBrains Mono";
-     src: url("/fonts/webfonts/JetBrainsMono-Regular.woff2") format("woff2");
+     font-family: 'JetBrains Mono';
+     src: url('/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2');
      font-weight: 400;
      font-style: normal;
      font-display: swap;
    }
    @font-face {
-     font-family: "JetBrains Mono";
-     src: url("/fonts/webfonts/JetBrainsMono-Medium.woff2") format("woff2");
+     font-family: 'JetBrains Mono';
+     src: url('/fonts/webfonts/JetBrainsMono-Medium.woff2') format('woff2');
      font-weight: 500;
      font-style: normal;
      font-display: swap;
    }
    @font-face {
-     font-family: "JetBrains Mono";
-     src: url("/fonts/webfonts/JetBrainsMono-SemiBold.woff2") format("woff2");
+     font-family: 'JetBrains Mono';
+     src: url('/fonts/webfonts/JetBrainsMono-SemiBold.woff2') format('woff2');
      font-weight: 600;
      font-style: normal;
      font-display: swap;
    }
    @font-face {
-     font-family: "JetBrains Mono";
-     src: url("/fonts/webfonts/JetBrainsMono-Bold.woff2") format("woff2");
+     font-family: 'JetBrains Mono';
+     src: url('/fonts/webfonts/JetBrainsMono-Bold.woff2') format('woff2');
      font-weight: 700;
      font-style: normal;
      font-display: swap;
    }
    @font-face {
-     font-family: "JetBrains Mono";
-     src: url("/fonts/webfonts/JetBrainsMono-Italic.woff2") format("woff2");
+     font-family: 'JetBrains Mono';
+     src: url('/fonts/webfonts/JetBrainsMono-Italic.woff2') format('woff2');
      font-weight: 400;
      font-style: italic;
      font-display: swap;
@@ -323,11 +323,11 @@
 
 1. In all files, replace:
    ```astro
-   import { Image } from "@astrojs/image/components";
+   import {Image} from "@astrojs/image/components";
    ```
    with:
    ```astro
-   import { Image } from "astro:assets";
+   import {Image} from "astro:assets";
    ```
 2. Update `<Image>` props for Astro v5 API:
    - Remove `fit`, `format`, `aspectRatio` props (use `width`/`height` instead)
@@ -354,10 +354,7 @@
 
 1. In every file using `<Icon>`, update the import:
    ```astro
-   // OLD
-   import { Icon } from "astro-icon";
-   // NEW
-   import { Icon } from "astro-icon/components";
+   // OLD import {Icon} from "astro-icon"; // NEW import {Icon} from "astro-icon/components";
    ```
 2. Check if icon names need updating for astro-icon v1 (icon sets may have changed)
 3. In `Footer.astro`, add `aria-label` to every icon-only social link:
@@ -498,7 +495,7 @@ Categories and skills:
      title: string;
      description: string;
      image?: string;
-     type?: "website" | "article";
+     type?: 'website' | 'article';
      publishedDate?: Date;
      tags?: string[];
    }
@@ -542,11 +539,9 @@ Categories and skills:
 2. In `Layout.astro`, add an inline `<script>` in `<head>` that runs before render:
    ```js
    const theme =
-     localStorage.getItem("theme") ??
-     (window.matchMedia("(prefers-color-scheme: dark)").matches
-       ? "dark"
-       : "light");
-   document.documentElement.classList.toggle("dark", theme === "dark");
+     localStorage.getItem('theme') ??
+     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+   document.documentElement.classList.toggle('dark', theme === 'dark');
    ```
 3. Create `ThemeToggle.astro` — a button that:
    - Toggles `dark` class on `<html>`
@@ -610,14 +605,10 @@ Categories and skills:
    ```js
    const observer = new IntersectionObserver(
      (entries) =>
-       entries.forEach((e) =>
-         e.target.classList.toggle("opacity-100", e.isIntersecting)
-       ),
+       entries.forEach((e) => e.target.classList.toggle('opacity-100', e.isIntersecting)),
      { threshold: 0.1 }
    );
-   document
-     .querySelectorAll("[data-animate]")
-     .forEach((el) => observer.observe(el));
+   document.querySelectorAll('[data-animate]').forEach((el) => observer.observe(el));
    ```
 4. Add `data-animate` and initial `opacity-0` class to section elements in Experience, Skills, Involvement, Brands, Testimonials
 5. Add staggered animation delays to Skills badges using `style="animation-delay: {i * 50}ms"`
@@ -665,7 +656,7 @@ Categories and skills:
    ```html
    <a
      href="#main-content"
-     class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 ..."
+     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 ..."
    >
      Skip to main content
    </a>

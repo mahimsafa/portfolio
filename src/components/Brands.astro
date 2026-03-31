@@ -1,16 +1,14 @@
 ---
-import { brands } from "../content/data.ts";
-import type { Brand } from "../types/index";
+import { brands } from '../content/data.ts';
+import type { Brand } from '../types/index';
 ---
 
-<section class="w-full flex flex-col justify-center space-y-5 my-10 pb-10" data-animate>
-  <h1 class="text-center text-3xl text-sky-400 font-semibold">
-    Brands & Clients
-  </h1>
-  <p class="text-gray-400 dark:text-slate-500 text-center">
+<section class="my-10 flex w-full flex-col justify-center space-y-5 pb-10" data-animate>
+  <h1 class="text-center text-3xl font-semibold text-sky-400">Brands & Clients</h1>
+  <p class="text-center text-gray-400 dark:text-slate-500">
     Brands and clients I have worked with.
   </p>
-  <div class="slider border dark:border-slate-700 py-3">
+  <div class="slider border py-3 dark:border-slate-700">
     <div class="slide-track">
       {
         brands.map((item: Brand) => (
@@ -18,14 +16,14 @@ import type { Brand } from "../types/index";
             href={item.link}
             target="_blank"
             rel="noopener noreferrer"
-            class="mx-10 h-20 w-auto py-4 overflow-hidden flex items-center justify-center"
+            class="mx-10 flex h-20 w-auto items-center justify-center overflow-hidden py-4"
           >
             <img
               src={item.logo}
               height={100}
               width={250}
               alt={item.link}
-              class="object-cover max-w-full dark:invert dark:opacity-70"
+              class="max-w-full object-cover dark:opacity-70 dark:invert"
             />
           </a>
         ))
@@ -38,14 +36,14 @@ import type { Brand } from "../types/index";
             target="_blank"
             rel="noopener noreferrer"
             aria-hidden="true"
-            class="mx-10 h-20 w-auto py-4 overflow-hidden flex items-center justify-center"
+            class="mx-10 flex h-20 w-auto items-center justify-center overflow-hidden py-4"
           >
             <img
               src={item.logo}
               height={100}
               width={250}
               alt={item.link}
-              class="object-cover max-w-full dark:invert dark:opacity-70"
+              class="max-w-full object-cover dark:opacity-70 dark:invert"
             />
           </a>
         ))
@@ -56,19 +54,11 @@ import type { Brand } from "../types/index";
 
 <style lang="scss">
   @mixin white-gradient {
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    );
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
   }
 
   @mixin dark-gradient {
-    background: linear-gradient(
-      to right,
-      rgba(15, 23, 42, 1) 0%,
-      rgba(15, 23, 42, 0) 100%
-    );
+    background: linear-gradient(to right, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0) 100%);
   }
 
   $animationSpeed: 25s;
@@ -99,14 +89,14 @@ import type { Brand } from "../types/index";
     &::before,
     &::after {
       @include white-gradient;
-      content: "";
+      content: '';
       height: 100px;
       position: absolute;
       width: 100px;
       z-index: 2;
 
-      @media only screen and (max-width: 700px){
-        display:none;
+      @media only screen and (max-width: 700px) {
+        display: none;
       }
     }
 

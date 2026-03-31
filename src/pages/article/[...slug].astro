@@ -1,11 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-import { format } from "date-fns";
-import Button from "../../components/Button.astro";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import { format } from 'date-fns';
+import Button from '../../components/Button.astro';
+import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("blog");
+  const blogEntries = await getCollection('blog');
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
@@ -23,24 +23,23 @@ const { Content } = await entry.render();
   publishedDate={entry.data.date}
   tags={entry.data.tags}
 >
-  <div class="w-full flex justify-center flex-col items-center py-5 mb-10">
+  <div class="mb-10 flex w-full flex-col items-center justify-center py-5">
     <img
       src={entry.data.cover}
       alt={entry.data.title}
-      class="md:w-2/3 w-full h-auto rounded-md mb-10 "
+      class="mb-10 h-auto w-full rounded-md md:w-2/3"
     />
-    <h1 class="text-4xl font-bold text-center">{entry.data.title}</h1>
-    <p class="p-0 m-0">&#183;&#183;&#183;</p>
-    <p class="text-gray-500">
-      on {format(new Date(entry.data.date), "PPPP, p")}
+    <h1 class="text-center text-4xl font-bold dark:text-slate-100">{entry.data.title}</h1>
+    <p class="m-0 p-0 dark:text-slate-500">&#183;&#183;&#183;</p>
+    <p class="text-gray-500 dark:text-slate-400">
+      on {format(new Date(entry.data.date), 'PPPP, p')}
     </p>
   </div>
-  <article class="prose prose-xl prose-img:mx-auto prose-img:rounded-sm max-w-none">
+  <article class="prose prose-xl max-w-none prose-img:mx-auto prose-img:rounded-sm dark:prose-invert">
     <!-- <slot /> -->
     <Content />
   </article>
-  <div class='w-full flex items-center py-10 justify-center'>
-
+  <div class="flex w-full items-center justify-center py-10">
     <Button />
   </div>
 </Layout>

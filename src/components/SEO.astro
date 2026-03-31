@@ -2,22 +2,14 @@
 interface Props {
   title: string;
   description: string;
-  image?: string;
-  type?: 'website' | 'article';
-  publishedDate?: Date;
-  tags?: string[];
-  canonicalUrl?: string;
+  image?: string | undefined;
+  type?: 'website' | 'article' | undefined;
+  publishedDate?: Date | undefined;
+  tags?: string[] | undefined;
+  canonicalUrl?: string | undefined;
 }
 
-const {
-  title,
-  description,
-  image,
-  type,
-  publishedDate,
-  tags,
-  canonicalUrl,
-} = Astro.props;
+const { title, description, image, type, publishedDate, tags, canonicalUrl } = Astro.props;
 
 const ogImage = image ?? 'https://mahimsafa.com/img/og-default.jpg';
 const canonical = canonicalUrl ?? Astro.url.href;
@@ -76,4 +68,4 @@ const schema = isArticle
 <link rel="canonical" href={canonical} />
 
 <!-- JSON-LD -->
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />

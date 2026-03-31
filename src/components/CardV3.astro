@@ -1,34 +1,43 @@
 ---
-import { Image } from "astro:assets";
-import FAvatar from "../assets/female-avatar.svg";
-import Avatar from "../assets/avatar.svg";
+import { Image } from 'astro:assets';
+import FAvatar from '../assets/female-avatar.svg';
+import Avatar from '../assets/avatar.svg';
 
 interface Props {
   name: string;
   gender: 'F' | 'M';
-  role?: string;
-  img?: string;
+  role?: string | undefined;
+  img?: string | undefined;
   review: string;
-  ref?: string;
-  company?: string;
+  ref?: string | undefined;
+  company?: string | undefined;
 }
 
 const { name, role = '', img, review, ref, company = '', gender } = Astro.props;
 const isMale = gender !== 'F';
 ---
 
-<div class="border dark:border-slate-700 shadow dark:bg-slate-800 w-64 h-auto md:h-[30rem] flex flex-col justify-start items-center px-2 pb-5 md:pb-0">
+<div
+  class="flex h-auto w-64 flex-col items-center justify-start border px-2 pb-5 shadow dark:border-slate-700 dark:bg-slate-800 md:h-[30rem] md:pb-0"
+>
   <div
-    class="w-24 h-24 rounded-full overflow-hidden border-2 border-sky-400 hover:animate-pulse my-5 cursor-pointer"
+    class="my-5 h-24 w-24 cursor-pointer overflow-hidden rounded-full border-2 border-sky-400 hover:animate-pulse"
   >
     {
       img ? (
-        <img src={img} class="object-cover" alt={name + " profile photo"} width={96} height={96} loading="lazy" />
+        <img
+          src={img}
+          class="object-cover"
+          alt={name + ' profile photo'}
+          width={96}
+          height={96}
+          loading="lazy"
+        />
       ) : (
         <Image
           src={isMale ? Avatar : FAvatar}
           alt={name}
-          class="object-cover -pb-2"
+          class="-pb-2 object-cover"
           width={96}
           height={96}
         />
@@ -41,12 +50,16 @@ const isMale = gender !== 'F';
   {role && <h5 class="text-sm text-sky-400">{role}</h5>}
   <a
     href={ref}
-    class="transition-colors duration-150 ease-in hover:text-sky-400 font-medium"
+    class="font-medium transition-colors duration-150 ease-in hover:text-sky-400"
     target="_blank"
     rel="noopener noreferrer"
   >
     {company}
   </a>
 
-  <p class={`text-center mt-6 text-zinc-500 dark:text-slate-400 ${ review.length >= 300 ?'text-sm':''}`}>{review}</p>
+  <p
+    class={`text-center mt-6 text-zinc-500 dark:text-slate-400 ${review.length >= 300 ? 'text-sm' : ''}`}
+  >
+    {review}
+  </p>
 </div>
