@@ -1,0 +1,69 @@
+---
+import { Icon } from 'astro-icon/components';
+import { sections } from '../content/data';
+---
+
+<nav
+  id="side-nav"
+  class="fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 lg:flex lg:flex-col lg:gap-3"
+  aria-label="Section navigation"
+>
+  {
+    sections.map((section) => (
+      <a
+        href={`#${section.id}`}
+        class="group relative flex h-3 w-3 items-center justify-center"
+        aria-label={`Go to ${section.label} section`}
+        data-section={section.id}
+      >
+        {/* Pulse ring — shown when active */}
+        <span class="dot-ring absolute h-3 w-3 rounded-full border border-sky-400 opacity-0" />
+        {/* Main dot */}
+        <span class="absolute h-3 w-3 rounded-full border-2 border-slate-600 bg-transparent transition-all duration-200 group-hover:border-sky-400 group-hover:bg-sky-400" />
+        {/* Tooltip */}
+        <span class="pointer-events-none absolute right-6 whitespace-nowrap rounded bg-slate-800 px-2 py-1 text-xs text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          {section.label}
+        </span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  [data-section].active span:nth-child(2) {
+    @apply border-sky-400 bg-sky-400;
+  }
+
+  [data-section].active .dot-ring {
+    opacity: 1;
+    animation: dotPulseRing 1.4s ease-out infinite;
+  }
+</style>
+
+<script>
+  const sideNav = document.getElementById('side-nav');
+  const navLinks = sideNav?.querySelectorAll('a[data-section]');
+  const sectionIds = Array.from(navLinks || []).map((link) => link.getAttribute('data-section'));
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0,
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks?.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('data-section') === id);
+        });
+      }
+    });
+  }, observerOptions);
+
+  sectionIds.forEach((id) => {
+    const section = document.getElementById(id!);
+    if (section) observer.observe(section);
+  });
+</script>

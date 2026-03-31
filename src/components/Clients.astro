@@ -1,0 +1,32 @@
+---
+import { brands } from '../content/data';
+---
+
+<section id="clients" class="w-full py-16" data-animate>
+  <h2 class="section-heading mb-4 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+    Clients
+  </h2>
+  <p class="mb-12 text-center text-sm text-slate-400">
+    Trusted by clients from around the world
+  </p>
+
+  <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+    {
+      brands.map((brand) => (
+        <a
+          href={brand.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex h-16 w-24 items-center justify-center grayscale transition-all duration-200 hover:grayscale-0 sm:h-20 sm:w-32"
+        >
+          <img
+            src={brand.logo}
+            alt="Client logo"
+            class="max-h-full max-w-full object-contain opacity-40 transition-opacity duration-200 group-hover:opacity-90"
+            loading="lazy"
+          />
+        </a>
+      ))
+    }
+  </div>
+</section>

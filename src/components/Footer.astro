@@ -1,53 +1,13 @@
 ---
-import { Icon } from "astro-icon/components";
 ---
 
-<footer class="flex flex-col w-full bg-white dark:bg-slate-900 mx-auto max-w-5xl shadow dark:shadow-slate-800/20 pt-10 border-t dark:border-slate-800">
-  <h1 class='text-center text-2xl text-sky-400 font-bold'>Social Handles</h1>
-  <div class="py-10 flex justify-center items-center space-x-5 sm:space-x-7">
-    <a href='https://www.linkedin.com/in/mahimsafa/' aria-label="LinkedIn profile" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="bi:linkedin"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-    <a href='https://twitter.com/mahim_safa' aria-label="Twitter profile" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="bi:twitter"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-    <a href='https://instagram.com/mahim_safa' aria-label="Instagram profile" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="uil:instagram-alt"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-    <a href='https://github.com/mahimsafa' aria-label="GitHub profile" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="bi:github"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-    <a href='https://mahimsafa.medium.com/' aria-label="Medium blog" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="ion:logo-medium"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-    <a href='https://blog.mahimsafa.com/' aria-label="Hashnode blog" target='_blank' rel="noopener noreferrer">
-      <Icon
-        name="simple-icons:hashnode"
-        class="w-10 h-10 hover:text-sky-400 hover:cursor-pointer transition-colors duration-150 ease-in"
-      />
-    </a>
-  </div>
-  <div
-    class="w-full h-16 text-black dark:text-slate-400 md:mx-auto rounded-sm flex justify-center bottom-0 items-center border-t dark:border-slate-800"
-  >
-    <p>
-      Made with <span class="text-sky-500 text-xl text-center"> &hearts;</span> by
-      Mahim Safa
-    </p>
-  </div>
+<footer
+  class="flex w-full flex-col items-center border-t border-slate-800 bg-transparent px-6 py-8 sm:px-10 lg:px-16"
+>
+  <p class="text-sm text-slate-500">
+    Made with <span class="text-sky-400">&hearts;</span> by Mahim Safa
+  </p>
+  <p class="mt-2 text-xs text-slate-600">
+    &copy; {new Date().getFullYear()} All rights reserved.
+  </p>
 </footer>

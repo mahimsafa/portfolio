@@ -1,0 +1,171 @@
+---
+import { Icon } from 'astro-icon/components';
+import { experiences } from '../content/data';
+---
+
+<section id="experience" class="w-full py-16" data-animate>
+  <div class="mb-12 flex items-center justify-center gap-3">
+    <h2 class="section-heading text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+      Experience
+    </h2>
+    <span
+      id="total-experience"
+      class="rounded-full bg-sky-900/50 px-3 py-1 text-sm font-medium text-sky-400 opacity-0 transition-opacity duration-300"
+    ></span>
+  </div>
+
+  <div class="relative">
+    <!-- Timeline line -->
+    <div
+      class="absolute left-0 top-0 hidden h-full w-0.5 bg-gradient-to-b from-sky-400 via-sky-400/50 to-transparent lg:left-8 lg:block"
+    />
+
+    <div class="flex flex-col gap-8">
+      {
+        experiences.map((exp) => (
+          <div class="relative flex flex-col lg:flex-row lg:gap-8">
+            {/* Timeline dot */}
+            <div class="timeline-dot-wrapper absolute left-0 top-6 hidden lg:left-8 lg:block">
+              <span class="timeline-dot-pulse" />
+              <span class="absolute inset-0 h-4 w-4 -translate-x-1/2 rounded-full border-4 border-sky-400 bg-slate-900" />
+            </div>
+
+            {/* Card — structured date attrs for client-side JS */}
+            <div
+              class="neon-card w-full rounded-lg border border-slate-700 border-l-4 border-l-sky-400 bg-slate-900/60 p-6 lg:ml-16"
+              data-start-year={exp.startDate[0]}
+              data-start-month={exp.startDate[1]}
+              data-end-year={exp.endDate ? exp.endDate[0] : ''}
+              data-end-month={exp.endDate ? exp.endDate[1] : ''}
+            >
+              <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <div class="mb-1 flex flex-wrap items-center gap-2">
+                    <h3 class="text-lg font-semibold text-slate-100">{exp.company}</h3>
+                    {exp.current && (
+                      <span class="rounded-full bg-sky-900/50 px-2 py-0.5 text-xs font-medium text-sky-400">
+                        Current
+                      </span>
+                    )}
+                    {exp.link && (
+                      <a
+                        href={exp.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${exp.company} website`}
+                        class="text-sky-400 transition-colors hover:text-sky-300"
+                      >
+                        <Icon name="gridicons:external" class="h-4 w-4" />
+                      </a>
+                    )}
+                  </div>
+                  <p class="text-sm font-medium text-slate-400">{exp.role}</p>
+                </div>
+                <div class="flex flex-col items-start gap-1 sm:items-end">
+                  <p class="text-sm text-slate-500">{exp.period}</p>
+                  <span class="exp-duration rounded bg-slate-800 px-2 py-0.5 text-xs font-medium text-sky-400 opacity-0 transition-opacity duration-300" />
+                </div>
+              </div>
+
+              <ul class="mb-4 space-y-2">
+                {exp.achievements.map((achievement) => (
+                  <li class="flex items-start gap-2 text-sm text-slate-400">
+                    <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-sky-400" />
+                    {achievement}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="flex flex-wrap gap-2">
+                {exp.skills.map((skill) => (
+                  <span class="rounded-md bg-slate-800 px-2 py-1 text-xs font-medium text-slate-300">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-dot-wrapper {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    transform: translateX(-50%);
+  }
+  .timeline-dot-pulse {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #38bdf8;
+    opacity: 0;
+  }
+  .timeline-dot-wrapper:hover .timeline-dot-pulse {
+    animation: dotPulseRing 0.7s ease-out forwards;
+  }
+</style>
+
+<script>
+  // ─── Helpers ──────────────────────────────────────────────────────
+
+  /** Months between two dates (positive, whole number). */
+  function monthDiff(start: Date, end: Date): number {
+    return Math.max(
+      0,
+      (end.getFullYear() - start.getFullYear()) * 12 +
+        (end.getMonth() - start.getMonth()),
+    );
+  }
+
+  /** "X yr Y mo" / "X yr" / "Y mo" */
+  function formatDuration(totalMonths: number): string {
+    if (totalMonths <= 0) return '< 1 mo';
+    const years  = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    if (years > 0 && months > 0) return `${years} yr ${months} mo`;
+    if (years > 0)                return `${years} yr`;
+    return `${months} mo`;
+  }
+
+  // ─── Per-stint duration badges ────────────────────────────────────
+
+  const cards = document.querySelectorAll<HTMLElement>(
+    '[data-start-year][data-start-month]',
+  );
+
+  let earliestStart: Date | null = null;
+
+  cards.forEach((card) => {
+    const sy = parseInt(card.dataset.startYear  ?? '0', 10);
+    const sm = parseInt(card.dataset.startMonth ?? '1', 10) - 1; // 0-indexed
+    const ey = card.dataset.endYear  ? parseInt(card.dataset.endYear,  10) : null;
+    const em = card.dataset.endMonth ? parseInt(card.dataset.endMonth, 10) - 1 : null;
+
+    const startDate = new Date(sy, sm, 1);
+    const endDate   = (ey !== null && em !== null) ? new Date(ey, em, 1) : new Date();
+
+    // Track the earliest start across all stints
+    if (!earliestStart || startDate < earliestStart) earliestStart = startDate;
+
+    const months = monthDiff(startDate, endDate);
+    const badge  = card.querySelector<HTMLElement>('.exp-duration');
+    if (badge) {
+      badge.textContent  = formatDuration(months);
+      badge.style.opacity = '1';
+    }
+  });
+
+  // ─── Total experience: earliest job start → today ─────────────────
+
+  const totalBadge = document.getElementById('total-experience');
+  if (totalBadge && earliestStart) {
+    const total = monthDiff(earliestStart, new Date());
+    totalBadge.textContent  = formatDuration(total);
+    totalBadge.style.opacity = '1';
+  }
+</script>

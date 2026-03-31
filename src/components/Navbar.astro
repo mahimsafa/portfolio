@@ -1,46 +1,61 @@
 ---
-import { Image } from "astro:assets";
-import Logo from "../assets/mahim-logo.png";
-import ThemeToggle from "./ThemeToggle.astro";
+import { Image } from 'astro:assets';
+import Logo from '../assets/mahim-logo.png';
+
+const isHomePage = Astro.url.pathname === '/';
 ---
 
 <nav
-  class="h-16 text-black dark:text-slate-200 max-w-5xl px-5 md:mx-auto bg-white/30 dark:bg-slate-900/90 sticky top-0 backdrop-blur-lg z-10 shadow-sm rounded-sm border-transparent dark:border-slate-800"
+  class="sticky top-0 z-40 h-16 w-full border-b border-slate-800 bg-slate-900/80 px-6 text-slate-200 shadow-sm backdrop-blur-lg sm:px-10 lg:px-16"
 >
-  <ul class="h-full flex justify-between items-center">
+  <ul class="flex h-full items-center justify-between">
     <li>
-      <!-- <div>Mahim</div> -->
-      <a
-        href="/"
-        class="transition-colors duration-150 ease-in hover:text-sky-400"
-      >
+      <a href="/" class="transition-colors duration-150 ease-in hover:text-sky-400">
         <Image src={Logo} width={50} height={50} alt="Mahim Logo" />
       </a>
     </li>
     <li class="flex items-center space-x-4">
-      <a
-        href="/"
-        class="transition-colors duration-150 ease-in hover:text-sky-400 dark:text-slate-300 dark:hover:text-sky-400"
-        >Home</a
-      >
+      {isHomePage ? (
+        <>
+          <a
+            href="#about"
+            class="hidden transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400 sm:inline"
+          >
+            About
+          </a>
+          <a
+            href="#experience"
+            class="hidden transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400 sm:inline"
+          >
+            Experience
+          </a>
+        </>
+      ) : (
+        <a
+          href="/"
+          class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
+        >
+          Home
+        </a>
+      )}
       <a
         href="/blog"
-        class="transition-colors duration-150 ease-in hover:text-sky-400 dark:text-slate-300 dark:hover:text-sky-400"
-        >Blog</a
+        class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
       >
+        Blog
+      </a>
       <a
         href="/external"
-        class="transition-colors duration-150 ease-in hover:text-sky-400 dark:text-slate-300 dark:hover:text-sky-400"
-        >External</a
+        class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
       >
-
-      <a
-        href="/hireme"
-        class="rounded transition-all duration-150 ease-in px-3 py-2 text-sky-400 ring-2 ring-sky-400 hover:bg-sky-400 hover:text-white"
-      >
-        Hire Me
+        External
       </a>
-      <ThemeToggle />
+      <a
+        href={isHomePage ? "#contact" : "/#contact"}
+        class="rounded px-3 py-2 text-sky-400 ring-2 ring-sky-400 transition-all duration-150 ease-in hover:bg-sky-400 hover:text-white"
+      >
+        Contact
+      </a>
     </li>
   </ul>
 </nav>

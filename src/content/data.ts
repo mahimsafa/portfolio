@@ -1,4 +1,132 @@
-import type { Review, External, Brand, SkillCategory } from '../types/index';
+import type {
+  Review,
+  External,
+  Brand,
+  SkillCategory,
+  Experience,
+  Section,
+  YearMonth,
+} from '../types/index';
+
+// ─── Period display helper ────────────────────────────────────────────────────
+const MONTH_NAMES = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+function formatPeriod(start: YearMonth, end: YearMonth | null): string {
+  const startStr = `${MONTH_NAMES[start[1] - 1]} ${start[0]}`;
+  const endStr = end ? `${MONTH_NAMES[end[1] - 1]} ${end[0]}` : 'Present';
+  return `${startStr} - ${endStr}`;
+}
+
+// ─── Experiences ──────────────────────────────────────────────────────────────
+// startDate: [year, month]  (month is 1-indexed)
+// endDate:   [year, month] | null  (null = ongoing / Present)
+
+export const experiences: Experience[] = [
+  {
+    company: 'Field Nation',
+    role: 'Software Engineer',
+    startDate: [2024, 12],
+    endDate: null,
+    period: formatPeriod([2024, 12], null),
+    current: true,
+    link: 'https://fieldnation.com',
+    achievements: [
+      'Contributing to the breakfix initiative which is essential for company growth',
+      'Delivered crucial features to enterprise clients in their new contract experience, reducing 70% of regular work errors',
+      'Significant reduction in manual labor through automation and improved workflows',
+    ],
+    skills: [
+      'PHP',
+      'NestJS',
+      'MySQL',
+      'React Native',
+      'Kafka',
+      'Logstash',
+      'OpenSearch',
+      'Kubernetes',
+      'Linear',
+    ],
+  },
+  {
+    company: 'AZ Group',
+    role: 'Lead Software Developer',
+    startDate: [2023, 11],
+    endDate: [2024, 11],
+    period: formatPeriod([2023, 11], [2024, 11]),
+    link: 'https://www.az-group.io/butly-ai',
+    achievements: [
+      'Architected and led full-stack development of Butly AI, an enterprise-grade AI-powered customer support platform',
+      'Designed a multi-LLM orchestration layer for contextually accurate, low-latency responses',
+      'Established engineering standards, code review processes, and CI/CD pipelines',
+    ],
+    skills: ['TypeScript', 'AWS', 'LangChain', 'OpenAI', 'Docker', 'CI/CD', 'Node.js'],
+  },
+  {
+    company: 'Fiverr',
+    role: 'Level 2 Seller',
+    startDate: [2022, 9],
+    endDate: null,
+    period: formatPeriod([2022, 9], null),
+    link: 'https://fiverr.com/mahimsafa',
+    achievements: [
+      'Delivered 50+ AWS infrastructure and full-stack engagements as a top-rated freelancer',
+      'Maintained consistent 5-star rating across all projects',
+      'Architected serverless solutions reducing client infrastructure costs by up to 60%',
+    ],
+    skills: ['AWS Lambda', 'API Gateway', 'DynamoDB', 'Serverless', 'Node.js', 'MERN Stack'],
+  },
+  {
+    company: 'Wellington In Your Pocket',
+    role: 'Cloud Engineer',
+    startDate: [2023, 1],
+    endDate: [2023, 9],
+    period: formatPeriod([2023, 1], [2023, 9]),
+    link: 'https://wellingtoninyourpocket.co.nz',
+    achievements: [
+      'Designed and implemented scalable backend cloud infrastructure on AWS',
+      'Introduced automated CI/CD pipelines cutting deployment time by over 80%',
+      'Drove cloud cost optimization initiative reducing monthly AWS spend by 40%',
+    ],
+    skills: ['AWS', 'EC2', 'RDS', 'CloudFront', 'CI/CD', 'Terraform'],
+  },
+  {
+    company: 'Byte Capsule Ltd.',
+    role: 'Operations Lead',
+    startDate: [2020, 5],
+    endDate: [2022, 11],
+    period: formatPeriod([2020, 5], [2022, 11]),
+    link: 'https://www.bytecapsuleit.com/',
+    achievements: [
+      'Led operations and technical service delivery at a cybersecurity startup',
+      'Conducted application security assessments and penetration testing for enterprise clients',
+      'Designed cybersecurity training curricula educating over 1,000 students',
+    ],
+    skills: ['Penetration Testing', 'Security Auditing', 'OWASP', 'Training', 'Linux'],
+  },
+];
+
+export const sections: Section[] = [
+  { id: 'about', label: 'About', icon: 'bi:person' },
+  { id: 'experience', label: 'Experience', icon: 'bi:briefcase' },
+  { id: 'skills', label: 'Skills', icon: 'bi:code-slash' },
+  { id: 'clients', label: 'Clients', icon: 'bi:building' },
+  { id: 'testimonials', label: 'Testimonials', icon: 'bi:chat-quote' },
+  { id: 'blog', label: 'Blog', icon: 'bi:journal-text' },
+  { id: 'contact', label: 'Contact', icon: 'bi:envelope' },
+];
 
 export const review: Review[] = [
   {
@@ -86,7 +214,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Languages',
-    skills: ['TypeScript', 'JavaScript', 'Node.js', 'Python', 'Bash'],
+    skills: ['TypeScript', 'JavaScript', 'Node.js', 'Python', 'PHP', 'Bash'],
   },
   {
     name: 'Frontend',
@@ -94,11 +222,11 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     name: 'Backend',
-    skills: ['Express.js', 'MongoDB', 'PostgreSQL', 'REST APIs', 'GraphQL'],
+    skills: ['Express.js', 'NestJS', 'MongoDB', 'PostgreSQL', 'MySQL', 'REST APIs', 'GraphQL'],
   },
   {
     name: 'DevOps & Infrastructure',
-    skills: ['Docker', 'CI/CD', 'GitHub Actions', 'Terraform', 'Linux'],
+    skills: ['Docker', 'Kubernetes', 'CI/CD', 'GitHub Actions', 'Terraform', 'Linux'],
   },
   {
     name: 'Security',

@@ -1,0 +1,55 @@
+---
+import { Icon } from 'astro-icon/components';
+import { review } from '../content/data';
+import MaleAvatar from '../assets/avatar.svg';
+import FemaleAvatar from '../assets/female-avatar.svg';
+---
+
+<section id="testimonials" class="w-full py-16" data-animate>
+  <h2 class="section-heading mb-12 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+    Testimonials
+  </h2>
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+    {
+      review.map((item) => (
+        <div class="neon-card flex flex-col rounded-lg border border-slate-700 bg-slate-900/60 p-6">
+          <Icon
+            name="bi:quote"
+            class="mb-4 h-8 w-8 text-sky-400/30"
+          />
+          <p class="mb-6 flex-grow text-sm leading-relaxed text-slate-400">
+            "{item.body}"
+          </p>
+          <div class="flex items-center gap-3">
+            <img
+              src={item.img || (item.gender === 'F' ? FemaleAvatar.src : MaleAvatar.src)}
+              alt={`${item.name} avatar`}
+              class="h-10 w-10 rounded-full object-cover"
+              loading="lazy"
+            />
+            <div>
+              <p class="font-medium text-slate-100">{item.name}</p>
+              {(item.role || item.company) && (
+                <p class="text-xs text-slate-400">
+                  {item.role}
+                  {item.role && item.company && ', '}
+                  {item.company && (
+                    <a
+                      href={item.ref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-sky-400 hover:underline"
+                    >
+                      {item.company}
+                    </a>
+                  )}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

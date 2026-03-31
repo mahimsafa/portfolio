@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon/components';
+import { sections } from '../content/data';
+---
+
+<nav
+  id="mobile-nav"
+  class="fixed bottom-0 left-0 right-0 z-50 flex h-16 items-center justify-around border-t border-slate-800 bg-slate-900/95 backdrop-blur-lg lg:hidden"
+  aria-label="Mobile section navigation"
+>
+  {
+    sections.slice(0, 5).map((section) => (
+      <a
+        href={`#${section.id}`}
+        class="flex flex-col items-center justify-center gap-1 px-3 py-2 text-slate-400 transition-colors duration-150 hover:text-sky-400"
+        aria-label={`Go to ${section.label} section`}
+        data-mobile-section={section.id}
+      >
+        <Icon name={section.icon} class="h-5 w-5" />
+        <span class="text-[10px] font-medium">{section.label}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  [data-mobile-section].active {
+    @apply text-sky-400;
+  }
+</style>
+
+<script>
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = mobileNav?.querySelectorAll('a[data-mobile-section]');
+  const mobileSectionIds = Array.from(mobileLinks || []).map((link) =>
+    link.getAttribute('data-mobile-section')
+  );
+
+  const mobileObserverOptions = {
+    root: null,
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0,
+  };
+
+  const mobileObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        mobileLinks?.forEach((link) => {
+          link.classList.toggle('active', link.getAttribute('data-mobile-section') === id);
+        });
+      }
+    });
+  }, mobileObserverOptions);
+
+  mobileSectionIds.forEach((id) => {
+    const section = document.getElementById(id!);
+    if (section) mobileObserver.observe(section);
+  });
+</script>

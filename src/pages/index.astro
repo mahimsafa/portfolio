@@ -1,45 +1,26 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
-import Experience from "../components/Experience.astro";
-import Involvement from "../components/Involvement.astro";
-import Skills from "../components/Skills.astro";
-
-import DP from "../assets/mahim-dp.jpg";
-import Testimonials from "../components/Testimonials.astro";
-import Brands from "../components/Brands.astro";
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Timeline from '../components/Timeline.astro';
+import SkillsGrid from '../components/SkillsGrid.astro';
+import Clients from '../components/Clients.astro';
+import TestimonialsGrid from '../components/TestimonialsGrid.astro';
+import BlogList from '../components/BlogList.astro';
+import Contact from '../components/Contact.astro';
 ---
 
 <Layout
   title="About"
-  description="Mahim Safa — Lead Software Developer specializing in AWS, DevOps, MERN stack, and AI systems. Available for freelance and full-time opportunities."
+  description="Mahim Safa — Software Engineer specializing in AWS, DevOps, full-stack development, and AI systems. Available for freelance and full-time opportunities."
   type="website"
 >
-  <header
-    class="py-10 mb-20 md:pt-20 flex justify-around items-center flex-col md:flex-row w-full animate-fade-in"
-  >
-    <Image src={DP} alt="Mahim Safa profile photo" class="w-60 h-60 rounded-xl shadow-lg" width={240} height={240} format="avif" />
-    <div class="md:w-1/2 flex flex-col">
-      <h1 class="my-3 text-2xl">Hi, I am Mahim Safa</h1>
-      <p class="text-sm text-gray-600">
-        I'm a highly skilled developer, DevOps, and security professional with
-        extensive experience in Amazon Web Services (AWS), MERN stack, React JS,
-        and serverless architecture. My technical expertise, problem-solving
-        aptitude, and adherence to industry standards enable me to provide
-        exceptional service and deliver top-notch results. I'm a dedicated
-        lifelong learner who stays up-to-date with the latest technologies and
-        best practices. If you're looking for a seasoned, results-driven
-        professional to bring your project to fruition, please don't hesitate to <span
-          class="text-sky-400 font-semibold"
-          ><a href="/hireme">contact</a></span
-        > me.
-      </p>
-    </div>
-  </header>
-
-  <Experience />
-  <Involvement />
-  <Skills />
-  <Brands />
-  <Testimonials />
+  <main class="animate-fade-in">
+    <Hero />
+    <Timeline />
+    <SkillsGrid />
+    <Clients />
+    <TestimonialsGrid />
+    <BlogList />
+    <Contact />
+  </main>
 </Layout>
