@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import SEO from '../components/SEO.astro';
 import type { SEOProps } from '../types/index';
-import SideNav from '../components/SideNav.astro';
 import MobileNav from '../components/MobileNav.astro';
 
 interface Props extends SEOProps {
@@ -312,7 +311,6 @@ const title = rawTitle ? `${rawTitle} | Mahim Safa` : 'Mahim Safa';
     </a>
 
     <Navbar />
-    <SideNav />
 
     <div
       id="main-content"

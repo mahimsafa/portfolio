@@ -15,11 +15,11 @@ const posts = await getCollection('blog');
       posts.map((item) => {
         return (
           <Card
-            slug={item.slug}
+            slug={item.id}
             heading={item.data.title}
             img={item.data.cover}
             date={item.data.date}
-            description={item.body.slice(0, 300).replace('#', '')}
+            description={item.body?.slice(0, 300).replace('#', '')}
           />
         );
       })
