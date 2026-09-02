@@ -14,7 +14,6 @@ export async function getStaticPaths() {
 const { entry  } = Astro.props;
 const { Content } = await render(entry);
 ---
-<h1>test</h1>
 <Layout
   title={entry.data.title}
   description={entry.body?.slice(0, 160) || ''}
@@ -27,16 +26,26 @@ const { Content } = await render(entry);
     <img
       src={entry.data.cover}
       alt={entry.data.title}
-      class="mb-10 h-auto w-full rounded-md md:w-2/3"
+      class="mb-10 h-auto w-full rounded-sm border-4 border-paper-edge shadow-[4px_4px_0_0_rgba(51,41,29,0.2)] sepia-[0.25] md:w-2/3"
     />
-    <h1 class="text-center text-4xl font-bold dark:text-slate-100">{entry.data.title}</h1>
-    <p class="m-0 p-0 dark:text-slate-500">&#183;&#183;&#183;</p>
-    <p class="text-gray-500 dark:text-slate-400">
+    <h1 class="text-center font-display text-4xl text-ink">{entry.data.title}</h1>
+    <hr class="rule-handdrawn my-4 w-32" aria-hidden="true" />
+    <p class="m-0 p-0 font-mono text-ink-soft">
+      Filed under {entry.data.tags.map((tag) => `#${tag}`).join(' ')} &mdash;
       on {format(new Date(entry.data.date), 'PPPP, p')}
     </p>
   </div>
-  <article class="prose prose-xl max-w-none prose-img:mx-auto prose-img:rounded-sm dark:prose-invert">
-    <!-- <slot /> -->
+  <article
+    class="prose prose-xl max-w-none font-serif text-ink
+      prose-headings:font-display prose-headings:text-ink
+      prose-p:text-ink
+      prose-a:text-rust prose-a:no-underline hover:prose-a:underline hover:prose-a:text-rust-bright
+      prose-strong:text-ink
+      prose-blockquote:border-l-rust prose-blockquote:text-ink-soft
+      prose-code:text-rust prose-code:font-mono
+      prose-pre:rounded-sm prose-pre:border prose-pre:border-paper-edge prose-pre:bg-paper-deep prose-pre:text-ink
+      prose-img:mx-auto prose-img:rounded-sm prose-img:border-2 prose-img:border-paper-edge"
+  >
     <Content />
   </article>
   <div class="flex w-full items-center justify-center py-10">

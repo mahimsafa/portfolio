@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Icon } from 'astro-icon/components';
+import Stamp from './Stamp.astro';
 import DP from '../assets/mahim-dp.jpg';
 
 const nameChars = 'Mahim Safa'.split('');
@@ -8,21 +8,28 @@ const nameChars = 'Mahim Safa'.split('');
 
 <section
   id="about"
-  class="flex min-h-[70vh] w-full flex-col items-center justify-center py-16 lg:flex-row lg:gap-16 lg:py-24"
+  class="flex min-h-[70vh] w-full flex-col items-center justify-center py-16 lg:flex-row lg:gap-20 lg:py-24"
 >
-  <div class="mb-8 flex-shrink-0 lg:mb-0">
+  <div class="photo-frame relative mb-10 flex-shrink-0 rotate-[-2deg] lg:mb-0">
     <Image
       src={DP}
       alt="Mahim Safa profile photo"
-      class="h-48 w-48 rounded-2xl shadow-lg ring-4 ring-sky-400/20 transition-transform duration-300 hover:scale-105 sm:h-56 sm:w-56 lg:h-64 lg:w-64"
-      width={256}
-      height={256}
+      class="h-48 w-48 rounded-sm border-4 border-paper-edge object-cover shadow-[5px_6px_0_0_rgba(51,41,29,0.2)] sepia-[0.35] transition-transform duration-300 hover:rotate-0 hover:scale-105 sm:h-56 sm:w-56 lg:h-72 lg:w-72"
+      width={288}
+      height={288}
       format="avif"
     />
+    <Stamp label="Open to work" class="absolute -right-8 -top-5 z-10 sm:-right-12" />
   </div>
 
-  <div class="flex max-w-xl flex-col text-center lg:text-left">
-    <h1 class="mb-2 text-3xl font-bold text-slate-100 sm:text-4xl lg:text-5xl" aria-label="Mahim Safa">
+  <div class="flex max-w-2xl flex-col text-center lg:text-left">
+    <p class="mb-3 font-display text-sm uppercase tracking-[0.3em] text-mustard">
+      The desk of
+    </p>
+    <h1
+      class="mb-4 font-display text-5xl leading-tight text-ink sm:text-6xl lg:text-7xl"
+      aria-label="Mahim Safa"
+    >
       {nameChars.map((char, i) => (
         <span
           class="hero-char"
@@ -31,10 +38,15 @@ const nameChars = 'Mahim Safa'.split('');
         >{char === ' ' ? '\u00A0' : char}</span>
       ))}
     </h1>
-    <p class="mb-6 text-lg font-medium text-sky-400 sm:text-xl hero-title">
-      Software Engineer<span class="cursor-blink" aria-hidden="true">|</span>
+
+    <p class="hero-title mb-6 flex items-center justify-center gap-1 font-mono text-lg font-medium text-rust sm:text-xl lg:justify-start">
+      <span class="sr-only">Software Engineer</span>
+      <span aria-hidden="true" class="inline-block min-w-[20ch] text-left">
+        <span id="role-typewriter"></span><span class="cursor-blink" aria-hidden="true">|</span>
+      </span>
     </p>
-    <p class="mb-8 text-sm leading-relaxed text-slate-400 sm:text-base animate-fade-in" style="animation-delay:0.6s">
+
+    <p class="mb-8 text-sm leading-relaxed text-ink-soft sm:text-base animate-fade-in" style="animation-delay:0.6s">
       I'm a highly skilled developer, DevOps, and security professional with extensive experience in
       Amazon Web Services (AWS), MERN stack, React JS, and serverless architecture. My technical
       expertise, problem-solving aptitude, and adherence to industry standards enable me to provide
@@ -42,46 +54,54 @@ const nameChars = 'Mahim Safa'.split('');
       up-to-date with the latest technologies and best practices.
     </p>
 
-    <div class="flex items-center justify-center gap-4 lg:justify-start animate-fade-in" style="animation-delay:0.8s">
+    <div class="flex flex-wrap items-center justify-center gap-4 lg:justify-start animate-fade-in" style="animation-delay:0.8s">
       <a
-        href="https://www.linkedin.com/in/mahimsafa/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn profile"
-        class="rounded-full p-2 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        href="#contact"
+        class="letterpress rounded-sm border border-paper-edge bg-rust px-5 py-2.5 font-mono text-sm font-medium text-paper transition-colors duration-150 hover:bg-rust-bright"
       >
-        <Icon name="bi:linkedin" class="h-6 w-6" />
+        Get in touch
       </a>
       <a
-        href="https://github.com/mahimsafa"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub profile"
-        class="rounded-full p-2 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        href="/blog"
+        class="rounded-sm border-2 border-ink/60 bg-transparent px-5 py-2.5 font-mono text-sm font-medium text-ink transition-colors duration-150 hover:border-rust hover:text-rust"
       >
-        <Icon name="bi:github" class="h-6 w-6" />
-      </a>
-      <a
-        href="mailto:hello@mahimsafa.com"
-        aria-label="Email me"
-        class="rounded-full p-2 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
-      >
-        <Icon name="bi:envelope" class="h-6 w-6" />
-      </a>
-      <a
-        href="https://twitter.com/mahim_safa"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Twitter profile"
-        class="rounded-full p-2 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
-      >
-        <Icon name="bi:twitter-x" class="h-6 w-6" />
+        Read the journal
       </a>
     </div>
   </div>
 </section>
 
 <style>
+  .photo-frame::before,
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    width: 5.5rem;
+    height: 1.6rem;
+    background: rgba(150, 116, 31, 0.35);
+    box-shadow: 0 1px 2px rgba(51, 41, 29, 0.15);
+    z-index: 20;
+    pointer-events: none;
+  }
+  .photo-frame::before {
+    top: -0.7rem;
+    left: -1.4rem;
+    transform: rotate(-40deg);
+  }
+  .photo-frame::after {
+    top: -0.7rem;
+    right: -1.4rem;
+    transform: rotate(40deg);
+  }
+
+  .letterpress {
+    box-shadow: 2px 2px 0 0 rgba(51, 41, 29, 0.3);
+  }
+  .letterpress:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+
   .hero-char {
     display: inline-block;
     opacity: 0;
@@ -97,6 +117,58 @@ const nameChars = 'Mahim Safa'.split('');
     display: inline-block;
     margin-left: 2px;
     animation: cursorBlink 1s step-end infinite;
-    color: #38bdf8;
+    color: #8c3a1e;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-char,
+    .hero-title {
+      opacity: 1;
+      animation: none;
+    }
+    .cursor-blink {
+      animation: none;
+    }
   }
 </style>
+
+<script>
+  const roleEl = document.getElementById('role-typewriter');
+  const roles = ['Software Engineer', 'DevOps Engineer', 'Cloud Architect', 'Full-Stack Developer'];
+
+  if (roleEl) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      roleEl.textContent = roles[0]!;
+    } else {
+      let roleIndex = 0;
+      let charIndex = 0;
+      let deleting = false;
+
+      const tick = () => {
+        const current = roles[roleIndex]!;
+        if (!deleting) {
+          charIndex++;
+          roleEl.textContent = current.slice(0, charIndex);
+          if (charIndex === current.length) {
+            deleting = true;
+            window.setTimeout(tick, 1800);
+            return;
+          }
+          window.setTimeout(tick, 75);
+        } else {
+          charIndex--;
+          roleEl.textContent = current.slice(0, charIndex);
+          if (charIndex === 0) {
+            deleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            window.setTimeout(tick, 400);
+            return;
+          }
+          window.setTimeout(tick, 40);
+        }
+      };
+
+      window.setTimeout(tick, 800);
+    }
+  }
+</script>

@@ -6,32 +6,32 @@ import FemaleAvatar from '../assets/female-avatar.svg';
 ---
 
 <section id="testimonials" class="w-full py-16" data-animate>
-  <h2 class="section-heading mb-12 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+  <h2 class="section-heading mb-12 text-center font-display text-2xl text-ink sm:text-3xl">
     Testimonials
   </h2>
 
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
     {
       review.map((item) => (
-        <div class="neon-card flex flex-col rounded-lg border border-slate-700 bg-slate-900/60 p-6">
+        <div class="paper-card relative flex flex-col rounded-sm border border-paper-edge bg-paper-deep/50 p-6">
           <Icon
             name="bi:quote"
-            class="mb-4 h-8 w-8 text-sky-400/30"
+            class="mb-4 h-8 w-8 text-mustard/60"
           />
-          <p class="mb-6 flex-grow text-sm leading-relaxed text-slate-400">
+          <p class="mb-6 flex-grow font-mono text-sm leading-relaxed text-ink-soft">
             "{item.body}"
           </p>
           <div class="flex items-center gap-3">
             <img
               src={item.img || (item.gender === 'F' ? FemaleAvatar.src : MaleAvatar.src)}
               alt={`${item.name} avatar`}
-              class="h-10 w-10 rounded-full object-cover"
+              class="h-10 w-10 rounded-full border border-paper-edge object-cover"
               loading="lazy"
             />
             <div>
-              <p class="font-medium text-slate-100">{item.name}</p>
+              <p class="font-display text-ink">{item.name}</p>
               {(item.role || item.company) && (
-                <p class="text-xs text-slate-400">
+                <p class="font-mono text-xs text-ink-soft">
                   {item.role}
                   {item.role && item.company && ', '}
                   {item.company && (
@@ -39,7 +39,7 @@ import FemaleAvatar from '../assets/female-avatar.svg';
                       href={item.ref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="text-sky-400 hover:underline"
+                      class="text-rust hover:underline"
                     >
                       {item.company}
                     </a>

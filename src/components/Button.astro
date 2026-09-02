@@ -3,18 +3,18 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <button
-  class="group mt-5 flex items-center justify-center rounded-sm border px-3 py-2 shadow transition-colors duration-200 ease-in text-white hover:text-sky-400"
+  class="group mt-5 flex items-center justify-center rounded-sm border border-paper-edge bg-paper-deep px-3 py-2 font-mono text-ink shadow-[2px_2px_0_0_rgba(51,41,29,0.3)] transition-colors duration-200 ease-in hover:bg-rust hover:text-paper active:translate-y-0.5 active:shadow-none"
   onclick="share()"
   onmouseout="outFunc()"
   >Share
   <span
-    class="absolute -mt-20 hidden rounded bg-gray-500 px-4 py-2 text-white transition-all duration-200 ease-in-out group-hover:block"
+    class="absolute -mt-20 hidden rounded-sm border border-paper-edge bg-paper-deep px-4 py-2 text-ink transition-all duration-200 ease-in-out group-hover:block"
     id="tooltip">Copy to clipboard</span
   >
   <Icon
     name="share"
     width="20"
-    class="ml-2 transition-colors duration-200 ease-in hover:text-sky-400 group-hover:fill-sky-400"
+    class="ml-2 transition-colors duration-200 ease-in group-hover:fill-paper"
   />
 </button>
 
@@ -24,7 +24,7 @@ import { Icon } from 'astro-icon/components';
     navigator.clipboard.writeText(sharecontent);
 
     const tooltip = document.getElementById('tooltip');
-    tooltip.innerHTML = "<b class='text-sky-400'>Copied: </b> " + sharecontent;
+    tooltip.innerHTML = "<b class='text-rust'>Copied: </b> " + sharecontent;
   }
   function outFunc() {
     const tooltip = document.getElementById('tooltip');

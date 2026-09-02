@@ -6,56 +6,80 @@ const isHomePage = Astro.url.pathname === '/';
 ---
 
 <nav
-  class="sticky top-0 z-40 h-16 w-full border-b border-slate-800 bg-slate-900/80 px-6 text-slate-200 shadow-sm backdrop-blur-lg sm:px-10 lg:px-16"
+  class="sticky top-0 z-40 w-full border-b border-paper-edge bg-paper/90 text-ink shadow-sm backdrop-blur-sm"
 >
-  <ul class="flex h-full items-center justify-between">
-    <li>
-      <a href="/" class="transition-colors duration-150 ease-in hover:text-sky-400">
-        <Image src={Logo} width={50} height={50} alt="Mahim Logo" />
-      </a>
-    </li>
-    <li class="flex items-center space-x-4">
-      {isHomePage ? (
-        <>
-          <a
-            href="#about"
-            class="hidden transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400 sm:inline"
-          >
-            About
+  <div
+    class="grid h-16 w-full grid-cols-[1fr_auto_1fr] items-center px-4 sm:px-10 lg:px-16"
+  >
+    <!-- Left: section links (or Home) -->
+    <div class="flex items-center gap-5 justify-self-start">
+      {
+        isHomePage ? (
+          <>
+            <a href="#about" class="nav-link hidden sm:inline">
+              About
+            </a>
+            <a href="#experience" class="nav-link hidden sm:inline">
+              Experience
+            </a>
+          </>
+        ) : (
+          <a href="/" class="nav-link">
+            Home
           </a>
-          <a
-            href="#experience"
-            class="hidden transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400 sm:inline"
-          >
-            Experience
-          </a>
-        </>
-      ) : (
-        <a
-          href="/"
-          class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
-        >
-          Home
-        </a>
-      )}
-      <a
-        href="/blog"
-        class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
-      >
+        )
+      }
+    </div>
+
+    <!-- Center: logo, dead center -->
+    <a
+      href="/"
+      class="justify-self-center transition-opacity duration-150 ease-in hover:opacity-80"
+      aria-label="Mahim Safa — home"
+    >
+      <Image src={Logo} width={50} height={50} alt="Mahim Logo" class="mix-blend-multiply" />
+    </a>
+
+    <!-- Right: page links + contact -->
+    <div class="flex items-center gap-4 justify-self-end sm:gap-5">
+      <a href="/blog" class="nav-link">
         Blog
       </a>
-      <a
-        href="/external"
-        class="transition-colors duration-150 ease-in text-slate-300 hover:text-sky-400"
-      >
+      <a href="/external" class="nav-link hidden sm:inline">
         External
       </a>
       <a
-        href={isHomePage ? "#contact" : "/#contact"}
-        class="rounded px-3 py-2 text-sky-400 ring-2 ring-sky-400 transition-all duration-150 ease-in hover:bg-sky-400 hover:text-white"
+        href={isHomePage ? '#contact' : '/#contact'}
+        class="rounded-sm border-2 border-rust px-3 py-1.5 font-mono text-sm font-medium text-rust transition-colors duration-150 ease-in hover:bg-rust hover:text-paper"
       >
         Contact
       </a>
-    </li>
-  </ul>
+    </div>
+  </div>
 </nav>
+
+<style>
+  .nav-link {
+    position: relative;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: #5c4d3a;
+    transition: color 0.15s ease-in;
+  }
+  .nav-link:hover {
+    color: #8c3a1e;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 5px;
+    opacity: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='5' viewBox='0 0 60 5'%3E%3Cpath d='M1 3.5 Q 8 1, 15 3 T 30 2.5 T 45 3.5 T 59 2.5' fill='none' stroke='%238c3a1e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 60px 5px;
+    transition: opacity 0.15s ease-in;
+  }
+  .nav-link:hover::after {
+    opacity: 1;
+  }
+</style>

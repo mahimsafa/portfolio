@@ -1,5 +1,4 @@
 ---
-import CardV4 from '../components/CardV4.astro';
 import Layout from '../layouts/Layout.astro';
 
 import { external } from '../content/data.ts';
@@ -10,7 +9,22 @@ import type { External } from '../types/index';
   title="Appearances"
   description="Speaking engagements, webinars, and community contributions by Mahim Safa."
 >
-  <section class="flex flex-col space-y-4 py-5">
-    {external.map((item: External) => <CardV4 item={item} />)}
+  <section class="mx-auto flex w-full max-w-3xl flex-col gap-4 py-5">
+    {
+      external.map((item: External) => (
+        <div class="paper-card flex w-full flex-col justify-center gap-1 rounded-sm border border-paper-edge bg-paper-deep/50 p-4">
+          <a
+            href={item.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-display text-lg text-ink transition-all duration-150 hover:text-rust hover:underline"
+          >
+            {item.text}
+          </a>
+          <p class="font-mono text-xs text-ink-soft">{item.date}</p>
+          <p class="font-mono text-xs text-ink-soft">{item.location}</p>
+        </div>
+      ))
+    }
   </section>
 </Layout>

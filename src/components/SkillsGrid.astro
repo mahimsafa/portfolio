@@ -3,20 +3,20 @@ import { skillCategories } from '../content/data';
 ---
 
 <section id="skills" class="w-full py-16" data-animate>
-  <h2 class="section-heading mb-12 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+  <h2 class="section-heading mb-12 text-center font-display text-2xl text-ink sm:text-3xl">
     Skills
   </h2>
 
   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
     {
       skillCategories.map((category) => (
-        <div class="neon-card rounded-lg border border-slate-700 bg-slate-900/60 p-5">
-          <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-sky-400">
+        <div class="paper-card stamp-reveal rounded-sm border border-paper-edge bg-paper-deep/50 p-5">
+          <h3 class="mb-4 font-display text-sm uppercase tracking-wider text-rust">
             {category.name}
           </h3>
           <div class="flex flex-wrap gap-2">
             {category.skills.map((skill) => (
-              <span class="skill-tag cursor-default rounded border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-300">
+              <span class="skill-tag cursor-default rounded-sm border border-paper-edge bg-paper px-2.5 py-1 font-mono text-xs font-medium text-ink">
                 {skill}
               </span>
             ))}

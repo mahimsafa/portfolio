@@ -3,17 +3,17 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <section id="contact" class="w-full py-16" data-animate>
-  <h2 class="section-heading mb-4 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+  <h2 class="section-heading mb-4 text-center font-display text-2xl text-ink sm:text-3xl">
     Let's Connect
   </h2>
-  <p class="mb-8 text-center text-sm text-slate-400">
+  <p class="mb-8 text-center font-mono text-sm text-ink-soft">
     Available for freelance work and full-time opportunities
   </p>
 
   <div class="flex flex-col items-center">
     <a
       href="mailto:hello@mahimsafa.com"
-      class="mb-8 flex items-center gap-2 rounded-lg bg-sky-400 px-6 py-3 font-medium text-slate-950 transition-colors duration-150 hover:bg-sky-300"
+      class="letterpress mb-8 flex items-center gap-2 rounded-sm border border-paper-edge bg-paper-deep px-6 py-3 font-mono font-medium text-ink transition-colors duration-150 hover:bg-rust hover:text-paper"
     >
       <Icon name="bi:envelope" class="h-5 w-5" />
       hello@mahimsafa.com
@@ -25,7 +25,7 @@ import { Icon } from 'astro-icon/components';
         target="_blank"
         rel="noopener noreferrer"
         aria-label="LinkedIn profile"
-        class="rounded-full p-3 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        class="rounded-full p-3 text-ink-soft transition-colors duration-150 hover:bg-paper-deep hover:text-rust"
       >
         <Icon name="bi:linkedin" class="h-6 w-6" />
       </a>
@@ -34,7 +34,7 @@ import { Icon } from 'astro-icon/components';
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub profile"
-        class="rounded-full p-3 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        class="rounded-full p-3 text-ink-soft transition-colors duration-150 hover:bg-paper-deep hover:text-rust"
       >
         <Icon name="bi:github" class="h-6 w-6" />
       </a>
@@ -43,7 +43,7 @@ import { Icon } from 'astro-icon/components';
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Twitter profile"
-        class="rounded-full p-3 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        class="rounded-full p-3 text-ink-soft transition-colors duration-150 hover:bg-paper-deep hover:text-rust"
       >
         <Icon name="bi:twitter-x" class="h-6 w-6" />
       </a>
@@ -52,10 +52,23 @@ import { Icon } from 'astro-icon/components';
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Fiverr profile"
-        class="rounded-full p-3 text-slate-400 transition-colors duration-150 hover:bg-slate-800 hover:text-sky-400"
+        class="rounded-full p-3 text-ink-soft transition-colors duration-150 hover:bg-paper-deep hover:text-rust"
       >
         <Icon name="simple-icons:fiverr" class="h-6 w-6" />
       </a>
     </div>
   </div>
 </section>
+
+<style>
+  .letterpress {
+    box-shadow: 2px 2px 0 0 rgba(51, 41, 29, 0.3);
+  }
+  .letterpress:hover {
+    box-shadow: 3px 3px 0 0 rgba(51, 41, 29, 0.35);
+  }
+  .letterpress:active {
+    transform: translateY(1px);
+    box-shadow: none;
+  }
+</style>

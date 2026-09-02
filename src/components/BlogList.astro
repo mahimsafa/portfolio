@@ -8,10 +8,10 @@ const posts = (await getCollection('blog'))
 ---
 
 <section id="blog" class="w-full py-16" data-animate>
-  <h2 class="section-heading mb-4 text-center text-2xl font-bold text-slate-100 sm:text-3xl">
+  <h2 class="section-heading mb-4 text-center font-display text-2xl text-ink sm:text-3xl">
     Latest Articles
   </h2>
-  <p class="mb-12 text-center text-sm text-slate-400">
+  <p class="mb-12 text-center font-mono text-sm text-ink-soft">
     Thoughts on development, cloud, and security
   </p>
 
@@ -20,20 +20,23 @@ const posts = (await getCollection('blog'))
       posts.map((post) => (
           <a
             href={`/article/${post.id}`}
-            class="group flex flex-col rounded-lg border border-slate-700 bg-slate-900/60 p-5"
+            class="paper-card group flex flex-col rounded-sm border border-paper-edge bg-paper-deep/50 p-5"
           >
-            <h3 class="mb-2 font-medium text-slate-100 transition-colors duration-150 group-hover:text-sky-400">
+            <h3 class="mb-2 font-display text-lg leading-snug text-ink transition-colors duration-150 group-hover:text-rust">
               {post.data.title}
             </h3>
             <div class="mb-3 flex flex-wrap gap-1">
               {post.data.tags.slice(0, 3).map((tag) => (
-                <span class="rounded bg-slate-800 px-2 py-0.5 text-xs text-slate-400">
+                <span class="rounded-sm border border-paper-edge bg-paper px-2 py-0.5 font-mono text-xs text-ink-soft">
                   {tag}
                 </span>
               ))}
             </div>
-            <p class="mt-auto text-xs text-slate-500">
-              {format(post.data.date, 'MMM d, yyyy')}
+            <p class="mt-auto flex items-center justify-between font-mono text-xs text-ink-soft">
+              <span>{format(post.data.date, 'MMM d, yyyy')}</span>
+              <span class="text-rust transition-colors duration-150 group-hover:text-rust-bright">
+                Read &rarr;
+              </span>
             </p>
           </a>
       ))
