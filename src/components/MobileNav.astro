@@ -1,6 +1,28 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { sections } from '../content/data';
+
+const isHomePage = Astro.url.pathname === '/';
+
+const keptSections = sections.filter((section) =>
+  ['about', 'experience', 'clients'].includes(section.id)
+);
+
+const mobileItems = [
+  ...keptSections.map((section) => ({
+    ...section,
+    href: isHomePage ? `#${section.id}` : `/#${section.id}`,
+    isSection: true,
+  })),
+  { id: 'blog', label: 'Blog', icon: 'bi:journal-text', href: '/blog', isSection: false },
+  {
+    id: 'contact',
+    label: 'Contact',
+    icon: 'bi:envelope',
+    href: isHomePage ? '#contact' : '/#contact',
+    isSection: true,
+  },
+];
 ---
 
 <nav
@@ -9,15 +31,15 @@ import { sections } from '../content/data';
   aria-label="Mobile section navigation"
 >
   {
-    sections.slice(0, 5).map((section) => (
+    mobileItems.map((item) => (
       <a
-        href={`#${section.id}`}
+        href={item.href}
         class="flex flex-col items-center justify-center gap-1 px-3 py-2 text-ink-soft transition-colors duration-150 hover:text-rust"
-        aria-label={`Go to ${section.label} section`}
-        data-mobile-section={section.id}
+        aria-label={item.isSection ? `Go to ${item.label} section` : `Go to ${item.label} page`}
+        data-mobile-section={item.isSection ? item.id : undefined}
       >
-        <Icon name={section.icon} class="h-5 w-5" />
-        <span class="text-[10px] font-medium">{section.label}</span>
+        <Icon name={item.icon} class="h-5 w-5" />
+        <span class="text-[10px] font-medium">{item.label}</span>
       </a>
     ))
   }

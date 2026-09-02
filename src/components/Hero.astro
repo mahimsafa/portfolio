@@ -4,6 +4,7 @@ import Stamp from './Stamp.astro';
 import DP from '../assets/mahim-dp.jpg';
 
 const nameChars = 'Mahim Safa'.split('');
+const roles = ['Software Engineer', 'System Architect', 'Agentic Development', 'FOSS Advocate'];
 ---
 
 <section
@@ -40,7 +41,9 @@ const nameChars = 'Mahim Safa'.split('');
     </h1>
 
     <p class="hero-title mb-6 flex items-center justify-center gap-1 font-mono text-lg font-medium text-rust sm:text-xl lg:justify-start">
-      <span class="sr-only">Software Engineer</span>
+      {roles.map((role) => (
+        <span class="sr-only">{role}</span>
+      ))}
       <span aria-hidden="true" class="inline-block min-w-[20ch] text-left">
         <span id="role-typewriter"></span><span class="cursor-blink" aria-hidden="true">|</span>
       </span>
@@ -134,7 +137,7 @@ const nameChars = 'Mahim Safa'.split('');
 
 <script>
   const roleEl = document.getElementById('role-typewriter');
-  const roles = ['Software Engineer', 'DevOps Engineer', 'Cloud Architect', 'Full-Stack Developer'];
+  const roles = ['Software Engineer', 'System Architect', 'Agentic Development', 'FOSS Advocate'];
 
   if (roleEl) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
